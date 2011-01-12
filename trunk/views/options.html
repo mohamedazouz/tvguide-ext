@@ -7,8 +7,89 @@ and open the template in the editor.
   <head>
     <title></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link type="text/css" rel="stylesheet" href="css/common.css"/>
+    <link type="text/css" rel="stylesheet" href="css/options.css"/>
   </head>
+  	
   <body>
-    TODO write content
+    <div class="container">
+    	<div>
+        	<div class="titles">
+            صفحة اعداد دليل القنوات
+            <div class="title-icon f"><img src="images/settings.png" width="47" height="49"></div>
+            </div>
+        </div>
+        
+        <div class="fields-container">
+        	<form action="" method="get">
+            	<label class="f form-labels"><strong>إختار البلد</strong></label>
+                <select name="">
+                  <option>مصر</option>
+                  <option>السعودية</option>
+                  <option>الاردن</option>
+                </select>
+            </form>
+        </div>
+        
+        <div class="fields-container">
+        	<form action="" method="get">
+            	<label class="f form-labels"><strong>إغلاق التنبية</strong></label>
+                <select name="">
+                  <option>تفعيل</option>
+                  <option>تعطيل</option>
+                </select>
+            </form>
+        </div>
+        
+        <div class="fields-container">
+        	<form action="" method="get">
+            	<label class="f form-labels"><strong>تنبية قبل العرض</strong></label>
+                <select name="">
+                  <option>بعد 10 ثوان</option>
+                  <option>بعد 20 ثوان</option>
+                </select>
+            </form>
+        </div>
+        
+        <div>
+        	<div class="titles">
+            إختار القناة 
+            <span class="tip"><strong>- إسحب و أسقط القناة</strong></span>
+            <div class="title-icon f"><img src="images/choose-channel.png" width="56" height="62"></div>
+            </div>
+        </div>
+        
+        <div>
+        	<div class="white-bg-title">
+            إختار القالب لقائمة المهام  
+            <div class="title-icon f"><img src="images/choose-template.png" width="67" height="67"></div>
+            </div>
+        </div>
+        
+        <div>
+        
+			<table class="radioTable RTMbps" border="0" cellpadding="0" cellspacing="0">
+                <tbody>
+                  <tr>
+                    <td class="5"><img src="images/template_1.png" width="239" height="180"></td>
+                    <td class="6"><img src="images/template_2.png" width="239" height="180"></td>
+                    
+                    <td class="highlight 8"><img src="images/template_3.png" width="239" height="180"></td>
+                  </tr>
+                  <tr class="send-tr">
+                    <td class="5"><input class="radioDemo" name="Mbps" value="5Mbps" type="radio">
+                      <a style="cursor:pointer;" onClick="news.setTheme(0)" class="signup Mbps" ><strong>اضف</strong></a></td>
+                    <td class="6"><input class="radioDemo" name="Mbps" value="5Mbps" type="radio">
+                      <a style="cursor:pointer;" onClick="news.setTheme(1)" class="signup Mbps" ><strong>اضف</strong></a></td>
+                   
+                    <td class=" highlight 8"><input class="radioDemo" name="Mbps" value="5Mbps" type="radio">
+                      <a style="cursor:pointer;" onClick="news.setTheme(3)" class="signup Mbps" ><strong>اضف</strong></a></td>
+                  </tr>
+                </tbody>
+              </table>
+              
+        </div>
+        
+    </div>
   </body>
 </html>
