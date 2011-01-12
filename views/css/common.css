@@ -1,0 +1,136 @@
+img {
+	border: none;
+}
+.nl {
+	clear: both;
+	line-height: 0;
+	font-size: 0;
+	height: 0;
+}
+.f {
+	float: right !important;
+}
+.f-r {
+	float: left !important;
+}
+.no-f {
+	float: none;
+}
+.clear {
+	clear: both !important;
+}
+.no-clear {
+	clear: none !important;
+}
+.auto-width {
+	width: auto;
+}
+.ta {
+	text-align: right;
+}
+.ta-r {
+	text-align: left;
+}
+.ta-c {
+	text-align: center;
+}
+.round {
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+.round-b {
+	border-radius:0 0 5px 5px;
+	-moz-border-radius: 0 0 5px 5px;
+	-webkit-border-radius: 0 0 5px 5px;
+}
+.round-t {
+	border-radius:5px 5px 0 0;
+	-moz-border-radius:5px 5px 0 0;
+	-webkit-border-radius:5px 5px 0 0;
+}
+h1, h2, h3, h4, h5 {
+	margin: 3px 0;
+}
+.h1 {
+	font-size:16px;
+	line-height: 26px;
+}
+.h2 {
+	font-size:13px;
+}
+/* forms */
+/*
+label, button, input[type="text"], input[type="password"], input[type="file"], select, textarea {
+	float: right;
+	clear: both;
+	margin: 0 0 5px 5px;
+	line-height: 1.5em;
+
+	font-family: Tahoma;
+	font-size: 12px;
+}
+
+input[type="text"], input[type="password"], input[type="file"], select, textarea
+{
+	border: 1px solid #CEE7FF;
+	border-radius: 5px;		-moz-border-radius: 5px;	-webkit-border-radius: 5px;
+	background-color: #ECF5FF;
+	padding: 5px;
+}
+
+label {
+	border: 1px transparent;
+	padding: 5px 0;
+	margin-bottom: 0;
+	width: 120px;
+}
+
+button {
+	padding: 5px 15px;
+}
+
+input[type="text"], input[type="password"], select {
+	width: 250px;
+}
+
+textarea
+{
+	width: 400px;
+	height: 100px;
+}
+
+input[type="checkbox"], input[type="radio"] {
+	float: right;
+	clear: both;
+	height: 2em;
+	margin-left: 10px;
+}
+
+
+
+
+label.error {
+	clear: none;
+	background-color: #FFCCCC;
+	color: #993300;
+	border-radius: 5px;		-moz-border-radius: 5px;	-webkit-border-radius: 5px;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+
+
+*/
+
+/* messages */
+.error-box {
+	padding: 10px 20px;
+	background-color: #FFCCFF;
+	color: #996600;
+}
+.notify-box {
+	padding: 10px 20px;
+	background-color: #C4E1FF;
+	color: #3770A8;
+}
