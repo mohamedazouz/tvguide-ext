@@ -8,10 +8,12 @@ body {
 	font-family:Tahoma, Geneva, sans-serif;
 	font-size:12px;
 	direction:rtl;
+	margin:0;
+	padding:0;
 }
 .container {
 	width:580px;
-	padding:10px;
+	padding:10px 10px 0 10px;
 	background:url(../images/BG.png) no-repeat;
 }
 .header {
