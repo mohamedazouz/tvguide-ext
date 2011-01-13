@@ -166,7 +166,7 @@ util.extend=function(){
 
 
  //instantiate an object of the class with option contructor to set the your options.
-var notifier=notification({
+var notifier=new notification({
     checkTimeperiod:'10',
     autoDelete:true,
     localStorageObject:'notob'
