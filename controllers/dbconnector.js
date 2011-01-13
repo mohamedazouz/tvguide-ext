@@ -196,6 +196,14 @@ var TVGdb={
                     },
                     TVGdb.onError);
             });
+        },
+        deleteChannelPrograms:function(channelId,handler){
+            TVGdb.db.transaction(function(tx) {
+                tx.executeSql("DELETE FROM programs WHERE channelId=?;",
+                    [channelId],
+                    handler,
+                    TVGdb.onError);
+            });
         }
 
     }

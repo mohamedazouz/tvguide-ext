@@ -2,7 +2,53 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-TVGBG={
-    
+TVGBG=function(){
+    var background={
+        doInBackGround:function(){
+            window.setInterval("background.updatePrograms()",1000 * 60 * 60 * 1);
+        },
+        updatePrograms:function(){
+            console.log('updating the programs at:'+new Date().getHours()+":"+new Date().getMinutes());
+            TVGdb.Channels.getActiveChannels(function(activechannels){
+                for(i = 0 ; i < activechannels.length; i++){
+                    XHRreader.read('xml', activechannels[i].url, {
+                        channelId:activechannels[i].id
+                    }, function(feed,ob){
+                        //channelId,title,link,stars,img,sttime,endtime,category
+                        var programs=[];
+                        for(j=0;  j <feed.items.length ; j++){
+                            var concatstars=function(stars){
+                                var sts=''
+                                for(s=0; s<stars.length;s++){
+                                    sts+=stars[s].star+(s==stars.length-1?'':',')
+                                }
+                                return sts;
+                            }
+                            programs.push({
+                                channelId:ob.channelId,
+                                title:feed.items[j].title,
+                                link:feed.items[j].link,
+                                img:feed.items[j].image,
+                                category:feed.items[j].category,
+                                sttime:feed.items[j].BroadCastStartTime,
+                                endtime:feed.items[j].BroadCastEndTime,
+                                stars:concatstars(feed.items[j].stars)
+                            });
+                        }
+                        TVGdb.Programs.deleteChannelPrograms(ob.channelId,function(){
+                            TVGdb.Programs.setChannelPrograms(ob.channelId,programs,function(){
+                                cosole.log('population successfully done for channel #'+parseInt(ob.channelId)+1);
+                            })
+                        })
+                    });
+                }
+            })
+        }
+
+    }
+    background.doInBackGround();
+    background.updatePrograms();
+    return background;
 }
 
+var background = TVGBG();
