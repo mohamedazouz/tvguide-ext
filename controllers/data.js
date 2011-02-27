@@ -8,7 +8,22 @@ var staticURL={
         {
             url:'',
             name:'',
-            img:''
+            img:'',
+            date:'',
+            items:[
+                {
+                    title: "",
+                    url: "",
+                    starts:[
+                        {
+                            name:""
+                        }
+                    ],
+                    startTime:"",
+                    endTime:"",
+                    type:""
+                }
+            ]
         }
     ]
 }

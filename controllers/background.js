@@ -43,7 +43,21 @@ TVGBG=function(){
                     });
                 }
             })
-        }
+        },
+        getchannel:function(i){
+            var parentSite="http://google.arabiainform.com/";
+            url=parentSite+i+".xml";
+            jQuery.getFeed({
+                url:url,
+                success:function(feed){
+                    background.channels.push(feed);
+                },
+                error:function(){
+                }
+            });
+
+        },
+        channels:[]
 
     }
     background.doInBackGround();
