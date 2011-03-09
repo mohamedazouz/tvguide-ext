@@ -179,8 +179,14 @@ cursor:pointer;
 	margin-left:30px;
 	margin-top:10px;
 	margin-right:20px;
+	position:relative;
 	}
-.channels-list ul li input{float:left;margin-top:15px;}
+.channels-list ul li input{
+	margin-top: 15px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	}
 .mbc4{
 	background:url(../options-channels/mbc4.png) no-repeat;
 	}
