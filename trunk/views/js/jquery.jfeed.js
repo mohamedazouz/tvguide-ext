@@ -103,6 +103,10 @@ JAtom.prototype = {
             item.description = jQuery(this).find('content').eq(0).text();
             item.updated = jQuery(this).find('updated').eq(0).text();
             item.id = jQuery(this).find('id').eq(0).text();
+            item.image = jQuery(this).find('image').eq(0).text();
+            item.BroadCastStartTime = jQuery(this).find('BroadCastStartTime').eq(0).text();
+            item.BroadCastEndTime = jQuery(this).find('BroadCastEndTime').eq(0).text();
+            //            item.BroadCastEndTime = jQuery(this).find('BroadCastEndTime').eq(0).text();
 
             feed.items.push(item);
         });
@@ -150,6 +154,9 @@ JRss.prototype  = {
             item.startdate=jQuery(this).find('BroadCastStartTime').eq(0).text();
             item.enddate=jQuery(this).find('BroadCastEndTime').eq(0).text();
             item.category=jQuery(this).find('category').eq(0).text();
+            item.image = jQuery(this).find('image').eq(0).text();
+            item.BroadCastStartTime = jQuery(this).find('BroadCastStartTime').eq(0).text();
+            item.BroadCastEndTime = jQuery(this).find('BroadCastEndTime').eq(0).text();
             feed.items.push(item);
         });
     }
