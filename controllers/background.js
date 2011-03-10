@@ -5,7 +5,7 @@
 TVGBG=function(){
     var background={
         doInBackGround:function(){
-            window.setInterval("background.updatePrograms()",1000 * 60 * 60 * 1);
+            window.setInterval("background.updatePrograms()",1000 * 60 * 60 * 2);
         },
         updatePrograms:function(){
             console.log('updating the programs at:'+new Date().getHours()+":"+new Date().getMinutes());
@@ -20,7 +20,7 @@ TVGBG=function(){
                             var concatstars=function(stars){
                                 var sts=''
                                 for(s=0; s<stars.length;s++){
-                                    sts+=stars[s].star+(s==stars.length-1?'':',')
+                                    sts+=stars[s].name+(s==stars.length-1?'':',')
                                 }
                                 return sts;
                             }
@@ -35,30 +35,11 @@ TVGBG=function(){
                                 stars:concatstars(feed.items[j].stars)
                             });
                         }
-                        TVGdb.Programs.deleteChannelPrograms(ob.channelId,function(){
-                            TVGdb.Programs.setChannelPrograms(ob.channelId,programs,function(){
-                                cosole.log('population successfully done for channel #'+parseInt(ob.channelId)+1);
-                            })
-                        })
+                        TVGdb.Programs.updateChannelPrograms(ob.channelId, programs, function(){});
                     });
                 }
             })
-        },
-        getchannel:function(i){
-            var parentSite="http://google.arabiainform.com/";
-            url=parentSite+i+".xml";
-            jQuery.getFeed({
-                url:url,
-                success:function(feed){
-                    background.channels.push(feed);
-                },
-                error:function(){
-                }
-            });
-
-        },
-        channels:[]
-
+        }
     }
     background.doInBackGround();
     background.updatePrograms();
