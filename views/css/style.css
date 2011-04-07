@@ -138,4 +138,11 @@ margin-right:60px;
 td{
 	vertical-align:middle;
 	text-align:center;
+	background:url(../channels/bg.png) no-repeat;
+	width:93px;
+	height:58px;
+	}
+td img{
+	width:30px;
+	margin:-14px 45px 0 0;
 	}
