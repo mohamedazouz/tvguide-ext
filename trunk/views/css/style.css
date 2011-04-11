@@ -135,7 +135,7 @@ margin-right:60px;
 	-webkit-border-radius:5px 0px 0px 5px;
 	color:#434343;
 	}
-td{
+/*td{
 	vertical-align:middle;
 	text-align:center;
 	background:url(../channels/bg.png) no-repeat;
@@ -145,4 +145,20 @@ td{
 td img{
 	width:30px;
 	margin:-14px 45px 0 0;
+	}*/
+.channels-list ul{
+	margin:0;
+	padding:0;
+	list-style:none;
+	}
+.channels-list ul li{
+	background:url(../channels/bg.png) no-repeat;
+	width:93px;
+	height:58px;
+	margin:0 15px;
+	text-align:center;
+	}
+.channels-list ul li img{
+	width:30px;
+	margin-top:6px;
 	}
