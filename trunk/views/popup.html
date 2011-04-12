@@ -4,307 +4,56 @@ and open the template in the editor.
 -->
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-  <head>
-    <title></title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link type="text/css" rel="stylesheet" href="css/common.css"/>
-    <link type="text/css" rel="stylesheet" href="css/style.css"/>
-    <script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
-    <script type="text/javascript" src="../controllers/popup.js"></script>
-  </head>
-  <body>
-      <div class="container">
-      		<!-- header -->
-          <div class="header">
-              <div class="logo f"><img src="images/guide-logo.png"/></div>
-              <span class="big-titles f"><strong>دليل  </strong></span>
-              <span class="small-titles f"><strong>القنوات </strong> </span>
-              
-              
-              <!-- menu -->
-              <div class="menu f-r">
-                <ul>
-                    <li class="f"><a href="#">دليل القنوات</a></li>
-                    <li class="f active"><a href="#">أهم البرامج</a></li>
-                    <li class="f"><a href="#">التنبية</a></li>
-                </ul>
-              </div>
-              
-              <div class="nl"></div>
-              
-               
-              
-          </div>
-          
-         
-				
-                
-                
-
-          	<!-- videos Thumbs -->
-          <div class="films-container">
-          <!-- channels List-->
-          
-          
-          <!--
-          
-          <table width="100%" border="0" cellspacing="0" cellpadding="0">
-              <tr>
-                <td><a href="#"><img src="channels/mbc3.jpg" alt="mbc3"></a></td>
-                <td><a href="#"><img src="channels/mbc3.jpg" alt="mbc3"></a></td>
-                <td><a href="#"><img src="channels/mbc3.jpg" alt="mbc3"></a></td>
-                <td><a href="#"><img src="channels/mbc3.jpg" alt="mbc3"></a></td>
-              </tr>
-              
-              <tr>
-                <td><a href="#"><img src="channels/mbc3.jpg" alt="mbc3"></a></td>
-                <td><a href="#"><img src="channels/mbc3.jpg" alt="mbc3"></a></td>
-                <td><a href="#"><img src="channels/mbc3.jpg" alt="mbc3"></a></td>
-                <td><a href="#"><img src="channels/mbc3.jpg" alt="mbc3"></a></td>
-              </tr>
-              
-         </table> 
-         
-         -->
-
-          
-          
-          	<div align="center">
-            	<img src="images/channel_logo.png" width="311" height="72">
-            </div>
-            
-            <div>
-            	<strong><a href="#" class="today f">اليوم</a></strong>
-                <strong><a href="#" class="tomorrow f">غدا</a></strong>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link type="text/css" rel="stylesheet" href="css/common.css"/>
+        <link type="text/css" rel="stylesheet" href="css/style.css"/>
+        <script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
+        <script type="text/javascript" src="../controllers/popup.js"></script>
+        <script type="text/javascript" src="../controllers/extension_util.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <!-- header -->
+            <div class="header">
+                <div class="logo f"><img alt="" src="images/guide-logo.png"/></div>
+                <span class="big-titles f"><strong>دليل  </strong></span>
+                <span class="small-titles f"><strong>القنوات </strong> </span>
+                <!-- menu -->
+                <div class="menu f-r">
+                    <ul>
+                        <li class="f active"><a id="channelListTab" style="cursor: pointer;">دليل القنوات</a></li>
+<!--                        <li class="f "><a id="programListTab" style="cursor: pointer;">أهم البرامج</a></li>-->
+                        <li class="f"><a id="notificationTab" style="cursor: pointer;">التنبية</a></li>
+                    </ul>
+                </div>
                 <div class="nl"></div>
             </div>
-          
-          
-          
-            <div>
-            	
-            	<a href="#" class="f"><img src="images/film_1.png" width="76" height="45"></a>
-                
-				<div class="f film-details">
-                <div class="f-r alert-icon"><img src="images/alert_icon.png" width="26" height="25"></div>
-                <div class="f-r">من 18:30  الى  20:30</div>
-                <div class="film-name">
-                
-                        <strong>
-                        <a href="">
-                        فيلم الوعد
-                        </a>
-                        </strong>
-                        
-                  </div>
-                    
+            <!-- videos Thumbs -->
+            <div class="films-container">
+                <!-- channels List-->
+                <div id="channelsList"></div>
+                <div id="nochannels" style="display: none;">لا توجد قنوات مختارة من فضلك إذهب الي <a style="cursor: pointer;color: blue;" id="settingsPage">الاعدادات</a> لاختيار القنوات المفضلة</div>
+                <div style="display: none;" id="programList">
+                    <div align="center">
+                        <img id="channelLogo" alt="" src="images/channel_logo.png" width="311" height="72">
+                    </div>
                     <div>
-                   بطولة :  أسر يس - روبى
-    
+                        <strong><a style="cursor: pointer;" id="todaysPrograms" class="today f">اليوم</a></strong>
+                        <strong><a style="cursor: pointer;" id="tomorrowsPrograms" class="tomorrow f">غدا</a></strong>
+                        <div class="nl"></div>
                     </div>
-                    
+                    <div id="programscontainer"></div>
                 </div>
-                	                
-           		<div class="nl"></div>
-                
+                <div id="notificationList"></div>
             </div>
-            
-            	
-            <div class="separator"></div>
-            
-            
-            
-            <div>
-            	
-            	<a href="#" class="f"><img src="images/film_1.png" width="76" height="45"></a>
-                
-				<div class="f film-details">
-                <div class="f-r">من 18:30  الى  20:30</div>
-                <div class="film-name">
-                
-                        <strong>
-                        <a href="">
-                        فيلم الوعد
-                        </a>
-                        </strong>
-                        
-                    </div>
-                    
-                    <div>
-                    تدور قصة الفيلم حول فكرة التسامح بشكل عام ، و أن نُحاول أن نُغفر للآخرين الأخطاء ، فنحن نُخطئ طوال الوقت ، لكننا أحياناً لا نغفر الخطأ ، حتى لو كان خطأ صغيراً ، إلا أنه أحياناً يكون حِجة للإذلال ، 
-                    </div>
-                    
-                </div>
-                	                
-           		<div class="nl"></div>
-                
+            <div class="tools">
+                <strong><a id="settingsPage" class="settings f">أعدادات</a></strong>
+                <div class="sponser f"><img alt="" src="images/show.png" width="167" height="79"></div>
+                <strong style="display: none;" id="backButton"><a style="cursor: pointer;" class="back f-r">عودة</a></strong>
+                <div class="nl"></div>
             </div>
-            
-            	
-            <div class="separator"></div>
-            
-            
-            <div>
-            	
-            	<a href="#" class="f"><img src="images/film_1.png" width="76" height="45"></a>
-                
-				<div class="f film-details">
-                <div class="f-r">من 18:30  الى  20:30</div>
-                <div class="film-name">
-                
-                        <strong>
-                        <a href="">
-                        فيلم الوعد
-                        </a>
-                        </strong>
-                        
-                    </div>
-                    
-                    <div>
-                    تدور قصة الفيلم حول فكرة التسامح بشكل عام ، و أن نُحاول أن نُغفر للآخرين الأخطاء ، فنحن نُخطئ طوال الوقت ، لكننا أحياناً لا نغفر الخطأ ، حتى لو كان خطأ صغيراً ، إلا أنه أحياناً يكون حِجة للإذلال ، 
-                    </div>
-                    
-                </div>
-                	                
-           		<div class="nl"></div>
-                
-            </div>
-            
-            	
-            <div class="separator"></div>
-            
-            
-            
-            <div>
-            	
-            	<a href="#" class="f"><img src="images/film_1.png" width="76" height="45"></a>
-                
-				<div class="f film-details">
-                <div class="f-r">من 18:30  الى  20:30</div>
-                <div class="film-name">
-                
-                        <strong>
-                        <a href="">
-                        فيلم الوعد
-                        </a>
-                        </strong>
-                        
-                    </div>
-                    
-                    <div>
-                    تدور قصة الفيلم حول فكرة التسامح بشكل عام ، و أن نُحاول أن نُغفر للآخرين الأخطاء ، فنحن نُخطئ طوال الوقت ، لكننا أحياناً لا نغفر الخطأ ، حتى لو كان خطأ صغيراً ، إلا أنه أحياناً يكون حِجة للإذلال ، 
-                    </div>
-                    
-                </div>
-                	                
-           		<div class="nl"></div>
-                
-            </div>
-            
-            	
-            <div class="separator"></div>
-            
-            
-            <div>
-            	
-            	<a href="#" class="f"><img src="images/film_1.png" width="76" height="45"></a>
-                
-				<div class="f film-details">
-                <div class="f-r">من 18:30  الى  20:30</div>
-                <div class="film-name">
-                
-                        <strong>
-                        <a href="">
-                        فيلم الوعد
-                        </a>
-                        </strong>
-                        
-                    </div>
-                    
-                    <div>
-                    تدور قصة الفيلم حول فكرة التسامح بشكل عام ، و أن نُحاول أن نُغفر للآخرين الأخطاء ، فنحن نُخطئ طوال الوقت ، لكننا أحياناً لا نغفر الخطأ ، حتى لو كان خطأ صغيراً ، إلا أنه أحياناً يكون حِجة للإذلال ، 
-                    </div>
-                    
-                </div>
-                	                
-           		<div class="nl"></div>
-                
-            </div>
-            
-            	
-            <div class="separator"></div>
-            
-            
-            <div>
-            	
-            	<a href="#" class="f"><img src="images/film_1.png" width="76" height="45"></a>
-                
-				<div class="f film-details">
-                <div class="f-r">من 18:30  الى  20:30</div>
-                <div class="film-name">
-                
-                        <strong>
-                        <a href="">
-                        فيلم الوعد
-                        </a>
-                        </strong>
-                        
-                    </div>
-                    
-                    <div>
-                    تدور قصة الفيلم حول فكرة التسامح بشكل عام ، و أن نُحاول أن نُغفر للآخرين الأخطاء ، فنحن نُخطئ طوال الوقت ، لكننا أحياناً لا نغفر الخطأ ، حتى لو كان خطأ صغيراً ، إلا أنه أحياناً يكون حِجة للإذلال ، 
-                    </div>
-                    
-                </div>
-                	                
-           		<div class="nl"></div>
-                
-            </div>
-            
-            	
-            <div class="separator"></div>
-            
-            <div>
-            	
-            	<a href="#" class="f"><img src="images/film_1.png" width="76" height="45"></a>
-                
-				<div class="f film-details">
-                <div class="f-r">من 18:30  الى  20:30</div>
-                <div class="film-name">
-                
-                        <strong>
-                        <a href="">
-                        فيلم الوعد
-                        </a>
-                        </strong>
-                        
-                    </div>
-                    
-                    <div>
-                    تدور قصة الفيلم حول فكرة التسامح بشكل عام ، و أن نُحاول أن نُغفر للآخرين الأخطاء ، فنحن نُخطئ طوال الوقت ، لكننا أحياناً لا نغفر الخطأ ، حتى لو كان خطأ صغيراً ، إلا أنه أحياناً يكون حِجة للإذلال ، 
-                    </div>
-                    
-                </div>
-                	                
-           		<div class="nl"></div>
-                
-            </div>
-            
-            	
-            <div class="separator"></div>
-            
-            
-            
-            
-         
-         
         </div>
-          <div class="tools">
-          	<strong><a href="#" class="settings f">أعدادات</a></strong>
-            <div class="sponser f"><img src="images/show.png" width="167" height="79"></div>
-            <strong><a href="#" class="back f-r">عودة</a></strong>
-            <div class="nl"></div>
-          </div>
-      </div>
-  </body>
+    </body>
 </html>

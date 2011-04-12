@@ -103,7 +103,7 @@
 		this.cache = function () {
 			
 			jq_results = $(target);
-                        console.log(jq_results)
+//                        console.log(jq_results)
 			if (typeof options.noResults === "string" && options.noResults !== "") {
 				jq_results = jq_results.not(options.noResults);
 			}
