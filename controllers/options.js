@@ -9,13 +9,17 @@ var TVGOptions=function(){
             createChannelList:function(list,selected){
                 var out="";
                 for(i in list){
-                    out+='<li class="f">';
+                    //only for testing
+                    if(list[i].opimg.indexOf('.png', 0)==-1){
+                        continue;
+                    }
+                    out+='<li style="cursor:pointer;" id="channel-'+list[i].id+'" class="f channelLI">';
                     out+='<div style="display:none;">'+list[i].name+'</div>'
                     out+='<img alt="'+list[i].name+'" src="'+list[i].opimg+'" />';
                     if(selected){
-                        out+='<input name="" type="checkbox" checked="true" value="'+list[i].id+'">';
+                        out+='<input name="" id="channelin-'+list[i].id+'" type="checkbox" checked="true" value="'+list[i].id+'">';
                     }else{
-                        out+='<input name="" type="checkbox" value="'+list[i].id+'">';
+                        out+='<input name="" id="channelin-'+list[i].id+'" type="checkbox" value="'+list[i].id+'">';
                     }
                     out+='</li>';
                 }
@@ -28,12 +32,48 @@ var TVGOptions=function(){
                 background.TVGdb.Channels.getInactiveChannels(function(list){
                     $("#channelList").append(tvgoptions.htmlMethods.createChannelList(list));
                     $("input#quicksearch").quicksearch("ul#channelList li");
+                    $('li.channelLI').click(function(e){
+                        channelId=this.id.substr(8);
+                        $('#channelin-'+channelId).attr('checked',! $('#channelin-'+channelId).attr('checked'));
+                        if($('#channelin-'+channelId).attr('checked'))
+                            background.TVGdb.Channels.activateChannel(channelId, function(){});
+                        else
+                            background.TVGdb.Channels.deactivateChannel(channelId, function(){
+                                background.TVGdb.Programs.deleteChannelPrograms(channelId, function(){});
+                            });
+                        chrome.extension.sendRequest({
+                            action:'updateChannelsPrograms'
+                        })
+                    });
                 });
+            });
+        },
+        setDomEvents:function(){
+            $("#notificationControll").val(window.localStorage.notification);
+            $("#notificationControll").change(function(){
+                window.localStorage.notification=this.value;
+                if(this.value == 'on'){
+                    $('#alertForOption').show();
+                }else{
+                    $('#alertForOption').hide();
+                }
+            });
+
+            if(window.localStorage.notification == 'on'){
+                $('#alertForOption').show();
+            }else{
+                $('#alertForOption').hide();
+            }
+
+            $('#alertFor').val(window.localStorage.alertIn);
+            $('#alertFor').change(function(){
+                window.localStorage.alertIn=this.value;
             });
         }
     }
     $(function(){
         tvgoptions.populateChannelList();
+        tvgoptions.setDomEvents();
     });
     return tvgoptions;
 }

@@ -36,7 +36,9 @@ var TVGdb={
      */
     onError: function(tx,error) {
         console.log("Error occurred: ", error.message);
-    }
+    },
+    Channels:null,
+    Programs:null
 }
 /**
  * channels table object.
@@ -179,6 +181,44 @@ TVGdb.Programs={
         });
     },
     /**
+     * get a list of todays programs for a channel.
+     * @param channelId the channel id.
+     * @param handler method to catch the list of programs.
+     */
+    getTodayChannelPrograms:function(channelId,handler){
+        var programs=[];
+        TVGdb.db.transaction(function(tx) {
+            tx.executeSql("SELECT * FROM programs WHERE channelId = ? AND sttime LIKE(?);",
+                [channelId,date_util.today("-")+'%'],
+                function(tx, results) {
+                    for (i = 0; i < results.rows.length; i++) {
+                        programs.push(util.clone(results.rows.item(i)));
+                    }
+                    handler(programs);
+                },
+                TVGdb.onError);
+        });
+    },
+    /**
+     * get a list of tomorrows programs for a channel.
+     * @param channelId the channel id.
+     * @param handler method to catch the list of programs.
+     */
+    getTomorrowChannelPrograms:function(channelId,handler){
+        var programs=[];
+        TVGdb.db.transaction(function(tx) {
+            tx.executeSql("SELECT * FROM programs WHERE channelId = ? AND sttime LIKE(?);",
+                [channelId,date_util.tomorrow('-')+'%'],
+                function(tx, results) {
+                    for (i = 0; i < results.rows.length; i++) {
+                        programs.push(util.clone(results.rows.item(i)));
+                    }
+                    handler(programs);
+                },
+                TVGdb.onError);
+        });
+    },
+    /**
      * set the list of programs for a channel.
      * @param channelId the channel id.
      * @param programs a list of programs to be populated.
@@ -279,6 +319,20 @@ TVGdb.Programs={
             tx.executeSql("UPDATE programs SET follow = ? WHERE id =?;",
                 [false,programId],
                 handler,
+                TVGdb.onError);
+        });
+    },
+    getTodaysFollowedPrograms:function(handler){
+        var programs=[];
+        TVGdb.db.transaction(function(tx) {
+            tx.executeSql("SELECT * FROM programs WHERE follow = ? AND sttime LIKE(?);",
+                [true,date_util.today("-")+'%'],
+                function(tx, results) {
+                    for (i = 0; i < results.rows.length; i++) {
+                        programs.push(util.clone(results.rows.item(i)));
+                    }
+                    handler(programs);
+                },
                 TVGdb.onError);
         });
     }
