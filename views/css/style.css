@@ -64,10 +64,13 @@ cursor:pointer;
  background-color: #434343;
  cursor:pointer;
 }
-.film-details {
+.film-details, .film-details-imageless {
 	width: 460px;
 	line-height:18px;
 }
+.film-details-imageless{
+	width: 540px;
+	}
 .film-name a {
 	color:#4b4b4b;
 }
@@ -162,4 +165,8 @@ td img{
 .channels-list ul li img{
 	width:30px;
 	margin-top:6px;
+	}
+.channels-name{
+	margin-right:120px;
+	color:#808080;
 	}
