@@ -90,7 +90,10 @@ function onRequest(request, sender, callback) {
         }, 1000 * 5);
     }
     if(request.action == 'addNotification'){
-        TVGdb.Programs.followProgram(request.message.programId, function(){});
+        TVGdb.Programs.followProgram(request.message.programId, callback);
+    }
+    if(request.action == 'removeNotification'){
+        TVGdb.Programs.unfollowProgram(request.message.programId, callback);
     }
 }
 
