@@ -1,13 +1,4 @@
-a {
-	text-decoration:none;
-}
-img {
-	border:0;
-}
 body {
-	font-family:Tahoma, Geneva, sans-serif;
-	font-size:12px;
-	direction:rtl;
 	margin:0;
 	padding:0;
 }
@@ -15,6 +6,9 @@ body {
 	width:580px;
 	padding:10px 10px 0 10px;
 	background:url(../images/BG.png) no-repeat;
+	font-family:Tahoma, Geneva, sans-serif;
+	font-size:12px;
+	direction:rtl;
 }
 .header {
 	background:url(../images/header-bg.png) no-repeat right;
