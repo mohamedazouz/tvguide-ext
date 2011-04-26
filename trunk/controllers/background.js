@@ -56,7 +56,7 @@ TVGBG=function(){
                     var programStartTime = new Date(list[i].sttime);
                     if(timeNow.getHours() == programStartTime.getHours() && (timeNow.getMinutes() == programStartTime.getMinutes()+notifyBefor)){
                         var notifier=new notification();
-                        notifier.fireNotification(notifier.notificationTypes.webkit, list[i].title, 'سيبدأ الان',list[i].img, list[i].link, 5);
+                        notifier.fireNotification(notifier.notificationTypes.webkit, list[i].title, 'سيبدأ بعد'+ notifyBefor +"دقيقة ",list[i].img, list[i].link, 30);
                     }
                 }
             });

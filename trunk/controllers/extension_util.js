@@ -4,13 +4,19 @@
  */
 var extension={
     openURL:function(url,focus){
+        if(url.indexOf('http')== -1){
+            url="http://"+url;
+        }
         chrome.tabs.create({
             url:url,
             selected:focus
         });
     },
     openOptionPage:function(){
-        extension.openURL(chrome.extension.getURL('views/options.html'), true);
+        chrome.tabs.create({
+            url:chrome.extension.getURL('views/options.html'),
+            selected:true
+        });
     }
 }
 
