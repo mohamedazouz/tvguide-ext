@@ -12,10 +12,27 @@ and open the template in the editor.
         <script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
         <script type="text/javascript" src="js/jquery.quicksearch.js"></script>
         <script type="text/javascript" src="../controllers/options.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-git.js"></script>
+
+        <script type="text/javascript">
+        	$(document).ready(function() {
+  				$('.save-button').click(function() {
+    			$('<div class="save-popup">تم الحفظ</div>')
+    			.insertAfter( $(this) )
+    			.fadeIn('slow')
+    			.animate({opacity: 1.0}, 3000)
+    			.fadeOut('slow', function() {
+      			$(this).remove();
+    		});
+  		});
+	});
+        </script>
+        
     </head>
 
     <body>
         <div class="container">
+        
             <div>
                 <div class="titles">
                     صفحة اعداد دليل القنوات
@@ -78,6 +95,7 @@ and open the template in the editor.
             </div>
             <div class="f" style="width:100%;">
             	<input type="submit" value="save"/ class="f-r save-button">
+                <div class="test" style="display:none">sssss</div>
             </div>
 
 <!--            <div>
