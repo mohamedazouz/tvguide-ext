@@ -196,3 +196,13 @@ cursor:pointer;
 .mbc-max{
 	background:url(../options-channels/mbc-max.png) no-repeat;
 	}
+.save-button{
+	background:#FFF;
+	width:65px;
+	height:25px;
+	border:1px solid #999;
+	-webkit-border-radius:5px;
+	color:#333;
+	margin-left:90px;
+	
+	}
