@@ -206,3 +206,12 @@ cursor:pointer;
 	margin-left:90px;
 	
 	}
+.save-popup{
+	float:left;
+	background:#FFF;
+	margin-left:40px;
+	-webkit-border-radius:5px;
+	padding:5px;
+	font-size:12px;
+	color:#333;
+	}

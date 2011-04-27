@@ -162,6 +162,11 @@ td img{
 	max-height:30px;
 	margin-left:0;
 	}
+.channels-list ul li a{
+	width: 100%;
+	height: 44px;
+	float: left;
+	}
 .channels-name{
 	margin-right:120px;
 	color:#808080;
