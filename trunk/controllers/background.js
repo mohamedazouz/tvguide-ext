@@ -85,9 +85,7 @@ var TVbackground = TVGBG();
  */
 function onRequest(request, sender, callback) {
     if(request.action=='updateChannelsPrograms'){
-        window.setTimeout(function(){
-            TVbackground.updatePrograms();
-        }, 1000 * 5);
+        TVbackground.updatePrograms();
     }
     if(request.action == 'addNotification'){
         TVGdb.Programs.followProgram(request.message.programId, callback);
