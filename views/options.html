@@ -12,27 +12,11 @@ and open the template in the editor.
         <script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
         <script type="text/javascript" src="js/jquery.quicksearch.js"></script>
         <script type="text/javascript" src="../controllers/options.js"></script>
-        <script type="text/javascript" src="http://code.jquery.com/jquery-git.js"></script>
-
-        <script type="text/javascript">
-        	$(document).ready(function() {
-  				$('.save-button').click(function() {
-    			$('<div class="save-popup">تم الحفظ</div>')
-    			.insertAfter( $(this) )
-    			.fadeIn('slow')
-    			.animate({opacity: 1.0}, 3000)
-    			.fadeOut('slow', function() {
-      			$(this).remove();
-    		});
-  		});
-	});
-        </script>
-        
     </head>
 
     <body>
         <div class="container">
-        
+
             <div>
                 <div class="titles">
                     صفحة اعداد دليل القنوات
@@ -40,36 +24,36 @@ and open the template in the editor.
                 </div>
             </div>
 
-<!--            <div class="fields-container">
-                    <label class="f form-labels"><strong>إختار البلد</strong></label>
-                    <select name="">
-                        <option>مصر</option>
-                        <option>السعودية</option>
-                        <option>الاردن</option>
-                    </select>
-            </div>-->
+            <!--            <div class="fields-container">
+                                <label class="f form-labels"><strong>إختار البلد</strong></label>
+                                <select name="">
+                                    <option>مصر</option>
+                                    <option>السعودية</option>
+                                    <option>الاردن</option>
+                                </select>
+                        </div>-->
 
             <div class="fields-container">
-                    <label class="f form-labels"><strong>إغلاق التنبية</strong></label>
-                    <select id="notificationControll" name="">
-                        <option value="on">تفعيل</option>
-                        <option value="off">تعطيل</option>
-                    </select>
+                <label class="f form-labels"><strong>إغلاق التنبية</strong></label>
+                <select id="notificationControll" name="">
+                    <option value="on">تفعيل</option>
+                    <option value="off">تعطيل</option>
+                </select>
             </div>
 
-<div id="alertForOption" class="fields-container">
-                    <label class="f form-labels"><strong>تنبية قبل العرض</strong></label>
-                    <select id="alertFor" name="">
-                        <option value="10">10 دقائق</option>
-                        <option value="20">20 دقائق</option>
-                        <option value="30">30 دقيقة</option>
-                    </select>
+            <div id="alertForOption" class="fields-container">
+                <label class="f form-labels"><strong>تنبية قبل العرض</strong></label>
+                <select id="alertFor" name="">
+                    <option value="10">10 دقائق</option>
+                    <option value="20">20 دقائق</option>
+                    <option value="30">30 دقيقة</option>
+                </select>
             </div>
 
             <div>
                 <div class="titles">
                     إختار القناة
-<!--                    <span class="tip"><strong>- إسحب و أسقط القناة</strong></span>-->
+                    <!--                    <span class="tip"><strong>- إسحب و أسقط القناة</strong></span>-->
                     <div class="title-icon f"><img alt="" src="images/choose-channel.png" width="56" height="62"></div>
                 </div>
             </div>
@@ -82,52 +66,44 @@ and open the template in the editor.
 
                     <!-- putting channels logos as images -->
                     <ul id="channelList">
-                        <li class="f">
-                            <img alt="" src="options-channels/mbc4.png" />
-                            <input name="" type="checkbox" value="">
-                        </li>
-                        <li class="f">
-                            <img alt="" src="options-channels/mbc3.png" />
-                            <input name="" type="checkbox" value="">
-                        </li>
                     </ul>
                 </div>
             </div>
             <div class="f" style="width:100%;">
-            	<input type="submit" value="save"/ class="f-r save-button">
+                <input id="saveButton" type="submit" value="save" class="f-r save-button">
                 <div class="test" style="display:none">sssss</div>
             </div>
 
-<!--            <div>
-                <div class="white-bg-title f">
-                    إختار القالب لقائمة المهام
-                    <div class="title-icon f"><img src="images/choose-template.png" width="67" height="67"></div>
-                </div>
-            </div>-->
+            <!--            <div>
+                            <div class="white-bg-title f">
+                                إختار القالب لقائمة المهام
+                                <div class="title-icon f"><img src="images/choose-template.png" width="67" height="67"></div>
+                            </div>
+                        </div>-->
 
-<!--            <div>
+            <!--            <div>
 
-                <table class="radioTable RTMbps" border="0" cellpadding="0" cellspacing="0">
-                    <tbody>
-                        <tr>
-                            <td class="5"><img src="images/template_1.png" width="239" height="180"></td>
-                            <td class="6"><img src="images/template_2.png" width="239" height="180"></td>
+                            <table class="radioTable RTMbps" border="0" cellpadding="0" cellspacing="0">
+                                <tbody>
+                                    <tr>
+                                        <td class="5"><img src="images/template_1.png" width="239" height="180"></td>
+                                        <td class="6"><img src="images/template_2.png" width="239" height="180"></td>
 
-                            <td class="highlight 8"><img src="images/template_3.png" width="239" height="180"></td>
-                        </tr>
-                        <tr class="send-tr">
-                            <td class="5"><input class="radioDemo" name="Mbps" value="5Mbps" type="radio">
-                                <a style="cursor:pointer;" onClick="news.setTheme(0)" class="signup Mbps" ><strong>اضف</strong></a></td>
-                            <td class="6"><input class="radioDemo" name="Mbps" value="5Mbps" type="radio">
-                                <a style="cursor:pointer;" onClick="news.setTheme(1)" class="signup Mbps" ><strong>اضف</strong></a></td>
+                                        <td class="highlight 8"><img src="images/template_3.png" width="239" height="180"></td>
+                                    </tr>
+                                    <tr class="send-tr">
+                                        <td class="5"><input class="radioDemo" name="Mbps" value="5Mbps" type="radio">
+                                            <a style="cursor:pointer;" onClick="news.setTheme(0)" class="signup Mbps" ><strong>اضف</strong></a></td>
+                                        <td class="6"><input class="radioDemo" name="Mbps" value="5Mbps" type="radio">
+                                            <a style="cursor:pointer;" onClick="news.setTheme(1)" class="signup Mbps" ><strong>اضف</strong></a></td>
 
-                            <td class=" highlight 8"><input class="radioDemo" name="Mbps" value="5Mbps" type="radio">
-                                <a style="cursor:pointer;" onClick="news.setTheme(3)" class="signup Mbps" ><strong>اضف</strong></a></td>
-                        </tr>
-                    </tbody>
-                </table>
+                                        <td class=" highlight 8"><input class="radioDemo" name="Mbps" value="5Mbps" type="radio">
+                                            <a style="cursor:pointer;" onClick="news.setTheme(3)" class="signup Mbps" ><strong>اضف</strong></a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
 
-            </div>-->
+                        </div>-->
 
         </div>
     </body>

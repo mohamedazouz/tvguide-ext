@@ -41,9 +41,6 @@ var TVGOptions=function(){
                             background.TVGdb.Channels.deactivateChannel(channelId, function(){
                                 background.TVGdb.Programs.deleteChannelPrograms(channelId, function(){});
                             });
-                        chrome.extension.sendRequest({
-                            action:'updateChannelsPrograms'
-                        })
                     });
                 });
             });
@@ -68,6 +65,20 @@ var TVGOptions=function(){
             $('#alertFor').val(window.localStorage.alertIn);
             $('#alertFor').change(function(){
                 window.localStorage.alertIn=this.value;
+            });
+            $("#saveButton").click(function(){
+                chrome.extension.sendRequest({
+                    action:'updateChannelsPrograms'
+                });
+                $('<div class="save-popup">تم الحفظ</div>')
+                .insertAfter( $(this) )
+                .fadeIn('slow')
+                .animate({
+                    opacity: 1.0
+                }, 3000)
+                .fadeOut('slow', function() {
+                    $(this).remove();
+                });
             });
         }
     }

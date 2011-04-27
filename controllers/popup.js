@@ -105,7 +105,7 @@ var TVGuidePopup = function(){
             });
             $("#settingsPage , #settingsPage1").click(function(){
                 extension.openOptionPage();
-            })
+            });
         },
         /**
          * get selected channels from db and add them to the channel list tab.
