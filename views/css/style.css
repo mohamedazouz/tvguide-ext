@@ -159,6 +159,8 @@ td img{
 .channels-list ul li img{
 	width:30px;
 	margin-top:6px;
+	max-height:30px;
+	margin-left:0;
 	}
 .channels-name{
 	margin-right:120px;
