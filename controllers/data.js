@@ -23,7 +23,7 @@ var staticURL={
         "url":"http://google.arabiainform.com/114.xml",
         "name":"المجد",
         "img":"channels/082510150838hc1sskvpu.png",
-        "opimg":"option_channels/"
+        "opimg":"option_channels/majd.png"
     },{
         "url":"http://google.arabiainform.com/133.xml",
         "name":"LBC",
@@ -32,8 +32,8 @@ var staticURL={
     },{
         "url":"http://google.arabiainform.com/134.xml",
         "name":"LBC اوروبا",
-        "img":"channels/",
-        "opimg":"option_channels/"
+        "img":"channels/lbc_europe.png",
+        "opimg":"option_channels/lbc_europe.png"
     },{
         "url":"http://google.arabiainform.com/151.xml",
         "name":"اعمال الاقتصادية",
@@ -47,8 +47,8 @@ var staticURL={
     },{
         "url":"http://google.arabiainform.com/183.xml",
         "name":"1+ الجزيرة الرياضية",
-        "img":"channels/aljazeera_sport1.png",
-        "opimg":"option_channels/Al_jazeera_sports_plus1.png"
+        "img":"channels/Al_jazeera_sports_plus1.png",
+        "opimg":"option_channels/aljazeera_sport1.png"
     },{
         "url":"http://google.arabiainform.com/198.xml",
         "name":"2+ الجزيرة الرياضية",
@@ -138,7 +138,7 @@ var staticURL={
         "url":"http://google.arabiainform.com/241.xml",
         "name":"الجزائر 3",
         "img":"channels/125px-Algeria3.png",
-        "opimg":"option_channels/"
+        "opimg":"option_channels/Algeria3.png"
     },{
         "url":"http://google.arabiainform.com/254.xml",
         "name":"روسيا اليوم",
@@ -183,7 +183,7 @@ var staticURL={
         "url":"http://google.arabiainform.com/325.xml",
         "name":"الثانية المصرية",
         "img":"channels/images (33).jpg",
-        "opimg":"option_channels/"
+        "opimg":"option_channels/esc_2.png"
     },{
         "url":"http://google.arabiainform.com/330.xml",
         "name":"BBC Arabic",
@@ -197,8 +197,8 @@ var staticURL={
     },{
         "url":"http://google.arabiainform.com/369.xml",
         "name":"المستقبل USA",
-        "img":"channels/",
-        "opimg":"option_channels/"
+        "img":"channels/futuretv.jpg",
+        "opimg":"option_channels/future_usa.png"
     },{
         "url":"http://google.arabiainform.com/377.xml",
         "name":"الاولي السعودية",
@@ -248,7 +248,7 @@ var staticURL={
         "url":"http://google.arabiainform.com/454.xml",
         "name":"بانوراما دراما 2",
         "img":"channels/pano.jpg",
-        "opimg":"option_channels/"
+        "opimg":"option_channels/panorama_drama_2.png"
     },{
         "url":"http://google.arabiainform.com/455.xml",
         "name":"النيل دراما",
@@ -297,13 +297,13 @@ var staticURL={
     },{
         "url":"http://google.arabiainform.com/499.xml",
         "name":"ابوظبي الوثائقية",
-        "img":"channels/",
-        "opimg":"option_channels/"
+        "img":"channels/images (64).jpg",
+        "opimg":"option_channels/national_geographic.png"
     },{
         "url":"http://google.arabiainform.com/514.xml",
         "name":"اليمن 1",
-        "img":"channels/",
-        "opimg":"option_channels/"
+        "img":"channels/yemen.jpg",
+        "opimg":"option_channels/yemen.png"
     },{
         "url":"http://google.arabiainform.com/519.xml",
         "name":"النيل سينما",
@@ -313,7 +313,7 @@ var staticURL={
         "url":"http://google.arabiainform.com/520.xml",
         "name":"اوسكار دراما",
         "img":"channels/1167.png",
-        "opimg":"option_channels/"
+        "opimg":"option_channels/oscar_drama.png"
     },{
         "url":"http://google.arabiainform.com/521.xml",
         "name":"ازهري",
@@ -342,8 +342,8 @@ var staticURL={
     },{
         "url":"http://google.arabiainform.com/555.xml",
         "name":"Fox Series",
-        "img":"channels/",
-        "opimg":"option_channels/"
+        "img":"channels/62959.gif.jpeg",
+        "opimg":"option_channels/fox_series.png"
     },{
         "url":"http://google.arabiainform.com/552.xml",
         "name":"كايرو دراما",
@@ -362,8 +362,8 @@ var staticURL={
     },{
         "url":"http://google.arabiainform.com/568.xml",
         "name":"Arabic Euro News",
-        "img":"channels/",
-        "opimg":"option_channels/"
+        "img":"channels/euro-news-tv-channel-logo.jpg",
+        "opimg":"option_channels/arabic_euro_news.png"
     },{
         "url":"http://google.arabiainform.com/572.xml",
         "name":"الاقتصادية بلس",
@@ -372,8 +372,8 @@ var staticURL={
     },{
         "url":"http://google.arabiainform.com/575.xml",
         "name":"ابوظبي دراما",
-        "img":"channels/",
-        "opimg":"option_channels/"
+        "img":"channels/abu_dhabi_drama.jpg",
+        "opimg":"option_channels/abo_dabi_drama.png"
     },{
         "url":"http://google.arabiainform.com/602.xml",
         "name":"2 ابوظبي الرياضية",
@@ -403,7 +403,7 @@ var staticURL={
         "url":"http://google.arabiainform.com/631.xml",
         "name":"الجزيرة الرياضية العامة",
         "img":"channels/images (83).jpg",
-        "opimg":"option_channels/"
+        "opimg":"option_channels/aljazeera_3ama.png"
     },{
         "url":"http://google.arabiainform.com/636.xml",
         "name":"فنون بلس",
@@ -442,8 +442,8 @@ var staticURL={
     },{
         "url":"http://google.arabiainform.com/74.xml",
         "name":"ART الافلام 2",
-        "img":"channels/",
-        "opimg":"option_channels/"
+        "img":"channels/1121.png",
+        "opimg":"option_channels/art_aflam_2.png"
     },{
         "url":"http://google.arabiainform.com/734.xml",
         "name":"الدوري والكاس",
@@ -467,12 +467,12 @@ var staticURL={
     },{
         "url":"http://google.arabiainform.com/781.xml",
         "name":"ميلودي دراما +2",
-        "img":"channels/",
-        "opimg":"option_channels/"
+        "img":"channels/1180.png",
+        "opimg":"option_channels/melody_drama_2.png"
     },{
         "url":"http://google.arabiainform.com/88.xml",
         "name":"MBC 1",
-        "img":"channels/",
+        "img":"channels/images3.jpg",
         "opimg":"option_channels/mbc.png"
     },{
         "url":"http://google.arabiainform.com/89.xml",
