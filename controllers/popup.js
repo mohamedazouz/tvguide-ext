@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 var background = chrome.extension.getBackgroundPage();
-var tvguidepopup = function(){
+var TVGuidePopup = function(){
     var tvguidepopup={
         HTMLGenerators:{
             channelList:function(list){
@@ -112,6 +112,7 @@ var tvguidepopup = function(){
          */
         selectedChannels:function(){
             if($('#channelsList').html() == ''){
+                console.log('eshta')
                 background.TVGdb.Channels.getActiveChannels(function(list){
                     if(list.length == 0){
                         $("#nochannels").show();
@@ -220,4 +221,4 @@ var tvguidepopup = function(){
     return tvguidepopup;
 }
 
-tvguidepopup =new tvguidepopup();
+tvguidepopup =new TVGuidePopup();
