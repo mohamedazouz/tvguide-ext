@@ -166,3 +166,7 @@ td img{
 	margin-right:120px;
 	color:#808080;
 	}
+.programList img{
+	width: 100px !important;
+	height: 100px !important;
+	}
