@@ -111,7 +111,7 @@ var TVGuidePopup = function(){
          * get selected channels from db and add them to the channel list tab.
          */
         selectedChannels:function(){
-            if($('#channelsList').html() == ''){
+            if($('#channelsList').html().indexOf('TV_loader.gif') != -1){
                 console.log('eshta')
                 background.TVGdb.Channels.getActiveChannels(function(list){
                     if(list.length == 0){

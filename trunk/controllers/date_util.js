@@ -42,7 +42,6 @@ var date_util={
         var date=new Date();
         date.setDate(date.getDate()-1);
         var daystring=date.getFullYear()+separator+((date.getMonth()+1)>9?(date.getMonth()+1):'0'+(date.getMonth()+1))+separator+(date.getDate()>9?date.getDate():'0'+date.getDate());
-        console.log(daystring);
         return daystring;
     },
     dayInWeek:function(dateString){
