@@ -349,6 +349,14 @@ TVGdb.Programs={
                 },
                 TVGdb.onError);
         });
+    },
+    deleteProgramsForDate:function(date,handler){
+        TVGdb.db.transaction(function(tx) {
+            tx.executeSql("DELETE FROM programs WHERE sttime like(?);",
+                [date+"%"],
+                handler,
+                TVGdb.onError);
+        });
     }
 }
 

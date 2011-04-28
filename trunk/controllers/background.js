@@ -40,10 +40,13 @@ TVGBG=function(){
                                 stars:concatstars(feed.items[j].stars)
                             });
                         }
-                        TVGdb.Programs.updateChannelPrograms(ob.channelId, programs, function(){});
+                        TVGdb.Programs.updateChannelPrograms(ob.channelId, programs, function(){
+                            //console.log('herrey',new Date());
+                        });
                     });
                 }
-            })
+            });
+            TVGdb.Programs.deleteProgramsForDate(date_util.yesterDay("-"), function(){});
         },
         checkForNotification:function(){
             if(window.localStorage.notification == 'off'){
@@ -57,6 +60,7 @@ TVGBG=function(){
                     if(timeNow.getHours() == programStartTime.getHours() && (timeNow.getMinutes() == programStartTime.getMinutes()+notifyBefor)){
                         var notifier=new notification();
                         notifier.fireNotification(notifier.notificationTypes.webkit, list[i].title, 'سيبدأ بعد'+ notifyBefor +"دقيقة ",list[i].img, list[i].link, 30);
+                        TVGdb.Programs.unfollowProgram(list[i].id, function(){});
                     }
                 }
             });

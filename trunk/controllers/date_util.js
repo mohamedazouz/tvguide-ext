@@ -34,6 +34,17 @@ var date_util={
         var now=(date.getHours()%12 > 9 ? date.getHours()%12 : '0'+(date.getHours()%12))+':'+(date.getMinutes()>9?date.getMinutes():'0'+(date.getMinutes()))+':'+(date.getSeconds()>9?date.getSeconds():'0'+(date.getSeconds()))+' '+(date.getHours() > 12?'pm':'am');
         return now;
     },
+    yesterDay:function(separator){
+        if(! separator){
+            separator = '/'
+        }
+        //format yy/mm/dd
+        var date=new Date();
+        date.setDate(date.getDate()-1);
+        var daystring=date.getFullYear()+separator+((date.getMonth()+1)>9?(date.getMonth()+1):'0'+(date.getMonth()+1))+separator+(date.getDate()>9?date.getDate():'0'+date.getDate());
+        console.log(daystring);
+        return daystring;
+    },
     dayInWeek:function(dateString){
         //format yy/mm/dd
         var weekDays=['Su','Mo','Tu','We','Th','Fr','Sa'];
