@@ -64,7 +64,7 @@ var TVGuidePopup = function(){
                     out+='<div class="f film-details">';
                     from = new Date(list[h].sttime);
                     to = new Date(list[h].endtime)
-                    out+='<div class="f-r">من '+from.getHours()+':'+from.getMinutes()+'  الى '+to.getHours()+':'+to.getMinutes()+'</div>';
+                    out+='<div class="f-r">'+from.getFullYear()+"-"+(from.getMonth()+1)+"-"+from.getDate()+' من '+from.getHours()+':'+from.getMinutes()+'  الى '+to.getHours()+':'+to.getMinutes()+'</div>';
                     out+='<div class="film-name">';
                     out+='<strong><a style="cursor:pointer;" onclick="tvguidepopup.openURL(\''+list[h].link+'\')">';
                     out+=list[h].title;
