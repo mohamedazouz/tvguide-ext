@@ -41,6 +41,7 @@ var TVGuidePopup = function(){
                     out+='</a></strong>';
                     out+='</div>';
                     out+='<div>';
+                    if(list[j].stars && list[j].stars != '')
                     if(list[j].category == 'برامج'){
                         out+='  تقديم :  '+list[j].stars;
                     }else{
@@ -112,10 +113,10 @@ var TVGuidePopup = function(){
          */
         selectedChannels:function(){
             if($('#channelsList').html().indexOf('TV_loader.gif') != -1){
-                console.log('eshta')
                 background.TVGdb.Channels.getActiveChannels(function(list){
                     if(list.length == 0){
                         $("#nochannels").show();
+                        $("#channelsList").hide();
                         return;
                     }
                     $("#channelsList").html(tvguidepopup.HTMLGenerators.channelList(list));
