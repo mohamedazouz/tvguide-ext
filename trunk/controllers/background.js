@@ -54,7 +54,12 @@ TVGBG=function(){
             }
             var timeNow= new Date();
             var notifyBefor=parseInt(window.localStorage.alertIn);
-            var country = JSON.parse(window.localStorage.country);
+            var country = null;
+            if(window.localStorage.country){
+                country = JSON.parse(window.localStorage.country);
+            }else{
+                country = countries.UTC;
+            }
             TVGdb.Programs.getTodaysFollowedPrograms(function(list){
                 for(i in list){
                     var programStartTime = new Date(list[i].sttime);
@@ -78,7 +83,7 @@ $(function(){
         window.localStorage.alertIn=10;
     }
     if(! window.localStorage.notification){
-        window.localStorage.alertIn='on';
+        window.localStorage.notification='on';
     }
 })
 
