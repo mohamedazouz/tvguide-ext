@@ -15,5 +15,5 @@
         "default_title": "TV Guide",
         "popup": "views/popup.html"
   },
-    "permissions": [ "tabs", "http://*/*" ,"notifications"]
+    "permissions": [ "tabs", "http://*/*" ,"notifications","geolocation"]
 }

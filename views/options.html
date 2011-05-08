@@ -12,6 +12,7 @@ and open the template in the editor.
         <script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
         <script type="text/javascript" src="js/jquery.quicksearch.js"></script>
         <script type="text/javascript" src="../controllers/options.js"></script>
+        <script type="text/javascript" src="../controllers/arabic_countries.js"></script>
     </head>
 
     <body>
@@ -24,14 +25,11 @@ and open the template in the editor.
                 </div>
             </div>
 
-            <!--            <div class="fields-container">
-                                <label class="f form-labels"><strong>إختار البلد</strong></label>
-                                <select name="">
-                                    <option>مصر</option>
-                                    <option>السعودية</option>
-                                    <option>الاردن</option>
-                                </select>
-                        </div>-->
+            <div class="fields-container">
+                <label class="f form-labels"><strong>إختار البلد</strong></label>
+                <select id="country" name="">
+                </select>
+            </div>
 
             <div class="fields-container">
                 <label class="f form-labels"><strong>إغلاق التنبية</strong></label>
@@ -44,6 +42,7 @@ and open the template in the editor.
             <div id="alertForOption" class="fields-container">
                 <label class="f form-labels"><strong>تنبية قبل العرض</strong></label>
                 <select id="alertFor" name="">
+                    <option value="0">0 دقيقة</option>
                     <option value="10">10 دقائق</option>
                     <option value="20">20 دقائق</option>
                     <option value="30">30 دقيقة</option>
@@ -71,7 +70,7 @@ and open the template in the editor.
             </div>
             <div class="f" style="width:100%;">
                 <input id="saveButton" type="submit" value="حفظ" class="f-r save-button">
-                
+
             </div>
 
             <!--            <div>
