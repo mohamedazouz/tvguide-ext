@@ -24,6 +24,13 @@ var TVGOptions=function(){
                     out+='</li>';
                 }
                 return out;
+            },
+            countriesSelect:function(){
+                var out="";//country
+                for(i in countries){
+                    out+='<option id="'+countries[i].en+'" value="'+countries[i].id+'">'+countries[i].ar+'</option>';
+                }
+                return out;
             }
         },
         populateChannelList:function(){
@@ -42,10 +49,20 @@ var TVGOptions=function(){
                                 background.TVGdb.Programs.deleteChannelPrograms(channelId, function(){});
                             });
                     });
+                    $('li.channelLI input').change(function(e){
+                        channelId=this.id;
+                        $('#'+channelId).attr('checked',! $('#'+channelId).attr('checked'));
+                    });
                 });
             });
         },
         setDomEvents:function(){
+            if(! window.localStorage.notification){
+                window.localStorage.notification = "off";
+            }
+            if(! window.localStorage.alertIn){
+                window.localStorage.alertIn = 0;
+            }
             $("#notificationControll").val(window.localStorage.notification);
             $("#notificationControll").change(function(){
                 window.localStorage.notification=this.value;
@@ -80,6 +97,33 @@ var TVGOptions=function(){
                     $(this).remove();
                 });
             });
+            $("#country").html(tvgoptions.htmlMethods.countriesSelect());
+            $("#country").change(function(e){
+                countryChanged(this.value);
+            })
+            var country = null;
+            if(window.localStorage.country){
+                country = JSON.parse(window.localStorage.country);
+                selectCountry(country.en);
+            }else{
+                Positioning.getPosition(function(ob){
+                    Positioning.geonamesVars(ob.lat,ob.lng,function(co){
+                        country=co.countryName;
+                        selectCountry(country);
+                    });
+                });
+            }
+            function selectCountry(country){
+                $("#"+country).attr('selected',true);
+                countryChanged($("#"+country).val());
+            }
+            function countryChanged(val){
+                for(i in countries){
+                    if(countries[i].id == val){
+                        window.localStorage.country = JSON.stringify(countries[i]);
+                    }
+                }
+            }
         }
     }
     $(function(){
@@ -89,3 +133,28 @@ var TVGOptions=function(){
     return tvgoptions;
 }
 var tvgoptions=new TVGOptions();
+var Positioning ={};
+Positioning.getPosition = function(fn){
+    navigator.geolocation.getCurrentPosition(function(pos) {
+        var position={
+            lat:pos.coords.latitude,
+            lng:pos.coords.longitude
+        }
+        fn(position);
+    })
+}
+Positioning.geonamesVars = function(lat,lng,handler){
+    var geoURL="http://api.geonames.org/timezoneJSON";
+    $.ajax({
+        url:geoURL,
+        dataType:'json',
+        data:{
+            lat:lat,
+            lng:lng,
+            username:'gshaban'
+        },
+        success:function(ob){
+            handler(ob);
+        }
+    });
+}

@@ -24,7 +24,7 @@ TVGBG=function(){
                         for(j=0;  j <feed.items.length ; j++){
                             var concatstars=function(stars){
                                 var sts=''
-                                for(s=0; s<stars.length;s++){
+                                for(s=0; s < stars.length &&  s < 5 ; s++){
                                     sts+=stars[s].name+(s==stars.length-1?'':',')
                                 }
                                 return sts;
@@ -54,10 +54,11 @@ TVGBG=function(){
             }
             var timeNow= new Date();
             var notifyBefor=parseInt(window.localStorage.alertIn);
+            var country = JSON.parse(window.localStorage.country);
             TVGdb.Programs.getTodaysFollowedPrograms(function(list){
                 for(i in list){
                     var programStartTime = new Date(list[i].sttime);
-                    if(timeNow.getHours() == programStartTime.getHours() && (timeNow.getMinutes() == programStartTime.getMinutes()+notifyBefor)){
+                    if(timeNow.getHours() == (programStartTime.getUTCHours() + country.timeZone) && (timeNow.getMinutes() == programStartTime.getMinutes()+notifyBefor)){
                         var notifier=new notification();
                         notifier.fireNotification(notifier.notificationTypes.webkit, list[i].title, 'سيبدأ بعد'+ notifyBefor +"دقيقة ",list[i].img, list[i].link, 30);
                         TVGdb.Programs.unfollowProgram(list[i].id, function(){});

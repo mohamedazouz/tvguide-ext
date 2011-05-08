@@ -32,9 +32,11 @@ var TVGuidePopup = function(){
                     }else{
                         out+='<div style="cursor:pointer;" onclick="tvguidepopup.addNotification('+list[j].id+',this)" title="أضف تنبية" class="f-r alert-icon"><img alt="أضف تنبية" src="images/alert_icon.png" width="26" height="25"></div>';
                     }
+                    var country=JSON.parse(window.localStorage.country);
                     from = new Date(list[j].sttime);
-                    to = new Date(list[j].endtime)
-                    out+='<div class="f-r">من '+from.getHours()+':'+from.getMinutes()+'  الى '+to.getHours()+':'+to.getMinutes()+'</div>';
+
+                    to = new Date(list[j].endtime);
+                    out+='<div class="f-r">من '+(from.getUTCHours() + country.timeZone)+':'+from.getMinutes()+'  الى '+(to.getUTCHours() + country.timeZone)+':'+to.getMinutes()+'</div>';
                     out+='<div class="film-name">';
                     out+='<strong><a style="cursor:pointer;" onclick="tvguidepopup.openURL(\''+list[j].link+'\')">';
                     out+=list[j].title;
