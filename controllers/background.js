@@ -6,8 +6,8 @@ TVGBG=function(){
     var TVbackground={
         doInBackGround:function(){
             window.setInterval(function(){
-                TVbackground.updatePrograms()
-            },1000 * 60 * 60 * 2);
+                TVbackground.updatePrograms();
+            },1000 * 60 * 60 * 12);
             window.setInterval(function(){
                 TVbackground.checkForNotification();
             },1000 * 60);
@@ -42,7 +42,7 @@ TVGBG=function(){
                         }
                         TVGdb.Programs.updateChannelPrograms(ob.channelId, programs, function(){
                             //console.log('herrey',new Date());
-                        });
+                            });
                     });
                 }
             });
@@ -58,7 +58,8 @@ TVGBG=function(){
             TVGdb.Programs.getTodaysFollowedPrograms(function(list){
                 for(i in list){
                     var programStartTime = new Date(list[i].sttime);
-                    if(timeNow.getHours() == (programStartTime.getUTCHours() + country.timeZone) && (timeNow.getMinutes() == programStartTime.getMinutes()+notifyBefor)){
+                    programStartTime.setTime(programStartTime.getTime() - notifyBefor * 60 * 1000);
+                    if(timeNow.getHours() == (programStartTime.getUTCHours() + country.timeZone) && (timeNow.getMinutes() == programStartTime.getMinutes())){
                         var notifier=new notification();
                         notifier.fireNotification(notifier.notificationTypes.webkit, list[i].title, 'سيبدأ بعد'+ notifyBefor +"دقيقة ",list[i].img, list[i].link, 30);
                         TVGdb.Programs.unfollowProgram(list[i].id, function(){});

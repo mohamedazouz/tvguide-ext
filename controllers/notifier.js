@@ -58,7 +58,10 @@ var notification=function(options){
                         );
                     notifier.webkitNotification.show();
                     if(closeTime != null && closeTime !== 0){
-                        window.setTimeout("notifier.webkitNotification.cancel();", closeTime * 1000);
+                        window.setTimeout(function(){
+                            if(notifier && notifier.webkitNotification)
+                                notifier.webkitNotification.cancel();
+                        }, closeTime * 1000);
                     }
                     break;
                 }
@@ -165,7 +168,7 @@ util.extend=function(){
 };
 
 
- //instantiate an object of the class with option contructor to set the your options.
+//instantiate an object of the class with option contructor to set the your options.
 var notifier=new notification({
     checkTimeperiod:'10',
     autoDelete:true,
