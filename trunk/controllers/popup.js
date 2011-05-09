@@ -19,6 +19,7 @@ var TVGuidePopup = function(){
             },
             programList:function(list){
                 var out='';
+                var country=JSON.parse(window.localStorage.country);
                 for( j in list){
                     out+='<div>';
                     if(list[j].img != null && list[j].img != ''){
@@ -32,11 +33,9 @@ var TVGuidePopup = function(){
                     }else{
                         out+='<div style="cursor:pointer;" onclick="tvguidepopup.addNotification('+list[j].id+',this)" title="أضف تنبية" class="f-r alert-icon"><img alt="أضف تنبية" src="images/alert_icon.png" width="26" height="25"></div>';
                     }
-                    var country=JSON.parse(window.localStorage.country);
                     from = new Date(list[j].sttime);
-
                     to = new Date(list[j].endtime);
-                    out+='<div class="f-r">من '+(from.getUTCHours() + country.timeZone)+':'+from.getMinutes()+'  الى '+(to.getUTCHours() + country.timeZone)+':'+to.getMinutes()+'</div>';
+                    out+='<div class="f-r">من '+((from.getUTCHours() + country.timeZone)%24)+':'+from.getMinutes()+'  الى '+((to.getUTCHours() + country.timeZone)%24)+':'+to.getMinutes()+'</div>';
                     out+='<div class="film-name">';
                     out+='<strong><a style="cursor:pointer;" onclick="tvguidepopup.openURL(\''+list[j].link+'\')">';
                     out+=list[j].title;
@@ -44,11 +43,11 @@ var TVGuidePopup = function(){
                     out+='</div>';
                     out+='<div>';
                     if(list[j].stars && list[j].stars != '')
-                    if(list[j].category == 'برامج'){
-                        out+='  تقديم :  '+list[j].stars;
-                    }else{
-                        out+='  بطولة :  '+list[j].stars;
-                    }
+                        if(list[j].category == 'برامج'){
+                            out+='  تقديم :  '+list[j].stars;
+                        }else{
+                            out+='  بطولة :  '+list[j].stars;
+                        }
                     out+='</div>';
                     out+='</div>';
                     out+='<div class="nl"></div>';
@@ -59,6 +58,7 @@ var TVGuidePopup = function(){
             },
             notificationList:function(list){
                 var out='';
+                var country=JSON.parse(window.localStorage.country);
                 for(h in list){
                     out+='<div id="program-'+list[h].id+'">';
                     if(list[h].img != null && list[h].img != ''){
@@ -67,7 +67,7 @@ var TVGuidePopup = function(){
                     out+='<div class="f film-details">';
                     from = new Date(list[h].sttime);
                     to = new Date(list[h].endtime)
-                    out+='<div class="f-r"> يوم'+(from.getMonth()+1)+" - "+from.getDate()+' من '+from.getHours()+':'+from.getMinutes()+'  الى '+to.getHours()+':'+to.getMinutes()+'</div>';
+                    out+='<div class="f-r"> يوم'+(from.getMonth()+1)+" - "+from.getDate()+' من '+((from.getUTCHours() + country.timeZone)%24)+':'+from.getMinutes()+'  الى '+((to.getUTCHours() + country.timeZone)%24)+':'+to.getMinutes()+'</div>';
                     out+='<div class="film-name">';
                     out+='<strong><a style="cursor:pointer;" onclick="tvguidepopup.openURL(\''+list[h].link+'\')">';
                     out+=list[h].title;
@@ -220,8 +220,17 @@ var TVGuidePopup = function(){
     $(function(){
         tvguidepopup.selectedChannels();
         tvguidepopup.setDomEvents();
+        if(! window.localStorage.country){
+            Positioning.getPosition(function(ob){
+                Positioning.geonamesVars(ob.lat,ob.lng,function(co){
+                    country=background.countries[co.countryName];
+                    window.localStorage.country =JSON.stringify(country);
+                });
+            });
+        }
     });
     return tvguidepopup;
 }
 
 tvguidepopup =new TVGuidePopup();
+var Positioning =background.Positioning;

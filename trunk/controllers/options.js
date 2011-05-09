@@ -133,28 +133,4 @@ var TVGOptions=function(){
     return tvgoptions;
 }
 var tvgoptions=new TVGOptions();
-var Positioning ={};
-Positioning.getPosition = function(fn){
-    navigator.geolocation.getCurrentPosition(function(pos) {
-        var position={
-            lat:pos.coords.latitude,
-            lng:pos.coords.longitude
-        }
-        fn(position);
-    })
-}
-Positioning.geonamesVars = function(lat,lng,handler){
-    var geoURL="http://api.geonames.org/timezoneJSON";
-    $.ajax({
-        url:geoURL,
-        dataType:'json',
-        data:{
-            lat:lat,
-            lng:lng,
-            username:'gshaban'
-        },
-        success:function(ob){
-            handler(ob);
-        }
-    });
-}
+var Positioning =background.Positioning;
