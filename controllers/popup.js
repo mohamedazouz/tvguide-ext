@@ -21,6 +21,12 @@ var TVGuidePopup = function(){
                 var out='';
                 var country=JSON.parse(window.localStorage.country);
                 for( j in list){
+                    from = new Date(list[j].sttime);
+                    to = new Date(list[j].endtime);
+                    date = new Date();
+                    if((to.getTime()+to.getTimezoneOffset()*60*1000) < (date.getTime() + date.getTimezoneOffset() * 60 * 1000 ) ){
+                        continue;
+                    }
                     out+='<div>';
                     if(list[j].img != null && list[j].img != ''){
                         out+='<a style="cursor:pointer;" onclick="tvguidepopup.openURL(\''+list[j].link+'\')" class="f"><img src="'+list[j].img+'" width="76" height="45"></a>';
@@ -33,8 +39,6 @@ var TVGuidePopup = function(){
                     }else{
                         out+='<div style="cursor:pointer;" onclick="tvguidepopup.addNotification('+list[j].id+',this)" title="أضف تنبية" class="f-r alert-icon"><img alt="أضف تنبية" src="images/alert_icon.png" width="26" height="25"></div>';
                     }
-                    from = new Date(list[j].sttime);
-                    to = new Date(list[j].endtime);
                     out+='<div class="f-r">من '+((from.getUTCHours() + country.timeZone)%24)+':'+from.getMinutes()+'  الى '+((to.getUTCHours() + country.timeZone)%24)+':'+to.getMinutes()+'</div>';
                     out+='<div class="film-name">';
                     out+='<strong><a style="cursor:pointer;" onclick="tvguidepopup.openURL(\''+list[j].link+'\')">';
@@ -63,11 +67,13 @@ var TVGuidePopup = function(){
                     out+='<div id="program-'+list[h].id+'">';
                     if(list[h].img != null && list[h].img != ''){
                         out+='<a style="cursor:pointer;" onclick="tvguidepopup.openURL(\''+list[h].link+'\')" class="f"><img src="'+list[h].img+'" width="76" height="45"></a>';
+                        out+='<div class="f film-details">';
+                    }else{
+                        out+='<div class="f film-details-imageless">';
                     }
-                    out+='<div class="f film-details">';
                     from = new Date(list[h].sttime);
                     to = new Date(list[h].endtime)
-                    out+='<div class="f-r"> يوم'+(from.getMonth()+1)+" - "+from.getDate()+' من '+((from.getUTCHours() + country.timeZone)%24)+':'+from.getMinutes()+'  الى '+((to.getUTCHours() + country.timeZone)%24)+':'+to.getMinutes()+'</div>';
+                    out+='<div class="f-r"> يوم'+from.getDate()+" - "+(from.getMonth()+1)+' من '+((from.getUTCHours() + country.timeZone)%24)+':'+from.getMinutes()+'  الى '+((to.getUTCHours() + country.timeZone)%24)+':'+to.getMinutes()+'</div>';
                     out+='<div class="film-name">';
                     out+='<strong><a style="cursor:pointer;" onclick="tvguidepopup.openURL(\''+list[h].link+'\')">';
                     out+=list[h].title;
@@ -126,7 +132,7 @@ var TVGuidePopup = function(){
             }
         },
         showNotificationList:function(){
-            background.TVGdb.Programs.getFollowedPrograms(function(list){
+            background.TVGdb.Programs.getFollowedProgramsOrderd(function(list){
                 if(list.length == 0){
                     $("#nofollowed").show();
                     return;
