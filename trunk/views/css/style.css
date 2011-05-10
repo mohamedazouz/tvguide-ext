@@ -59,11 +59,11 @@ cursor:pointer;
  cursor:pointer;
 }
 .film-details, .film-details-imageless {
-	width: 460px;
+	width: 435px;
 	line-height:18px;
 }
 .film-details-imageless{
-	width: 540px;
+	width: 515px;
 	}
 .film-name a {
 	color:#4b4b4b;
