@@ -350,6 +350,20 @@ TVGdb.Programs={
                 TVGdb.onError);
         });
     },
+    getFollowedProgramsOrderd:function(handler){
+        var programs=[];
+        TVGdb.db.transaction(function(tx) {
+            tx.executeSql("SELECT * FROM programs WHERE follow = ? ORDER BY sttime ;",
+                [true],
+                function(tx, results) {
+                    for (i = 0; i < results.rows.length; i++) {
+                        programs.push(util.clone(results.rows.item(i)));
+                    }
+                    handler(programs);
+                },
+                TVGdb.onError);
+        });
+    },
     deleteProgramsForDate:function(date,handler){
         TVGdb.db.transaction(function(tx) {
             tx.executeSql("DELETE FROM programs WHERE sttime like(?);",
