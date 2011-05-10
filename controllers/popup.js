@@ -36,7 +36,7 @@ var TVGuidePopup = function(){
                     }
                     if(list[j].follow == 'true'){
                         out+='<div style="cursor:pointer;" onclick="tvguidepopup.removeNotification('+list[j].id+',this)" title="احذف تنبية" class="f-r alert-icon"><img alt="احذف تنبية" src="images/close.png" width="26" height="25"></div>';
-                    }else{
+                    }else if((from.getTime()+from.getTimezoneOffset()*60*1000) > (date.getTime() + date.getTimezoneOffset() * 60 * 1000 )){
                         out+='<div style="cursor:pointer;" onclick="tvguidepopup.addNotification('+list[j].id+',this)" title="أضف تنبية" class="f-r alert-icon"><img alt="أضف تنبية" src="images/alert_icon.png" width="26" height="25"></div>';
                     }
                     out+='<div class="f-r">من '+((from.getUTCHours() + country.timeZone)%24)+':'+from.getMinutes()+'  الى '+((to.getUTCHours() + country.timeZone)%24)+':'+to.getMinutes()+'</div>';
