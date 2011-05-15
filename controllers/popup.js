@@ -158,13 +158,18 @@ var TVGuidePopup = function(){
                 $("#channelLogo").attr('src',channel.img);
                 $("#channelLogo").attr('alt',channel.name);
                 $('#todaysPrograms').bind('click', function(){
+                    $(".activeProgram").removeClass("activeProgram");
+                    $(this).addClass("activeProgram");
                     setTodaysList();
                 });
                 $('#tomorrowsPrograms').bind('click', function(){
+                    $(".activeProgram").removeClass("activeProgram");
+                    $(this).addClass("activeProgram");
                     $("#programscontainer").html('');
                     setTomorrowsList();
                 });
             });
+            $('#todaysPrograms').addClass("activeProgram");
             background.TVGdb.Programs.getTodayChannelPrograms(channelId,function(list){
                 $("#programscontainer").html(tvguidepopup.HTMLGenerators.programList(list));
             });
