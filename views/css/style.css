@@ -129,10 +129,12 @@ margin-right:60px;
 	margin-bottom: 10px;
 	}
 .tomorrow{
-	background:#b0b0b0;
 	-webkit-border-radius:5px 0px 0px 5px;
-	color:#434343;
 	}
+.activeProgram{
+	background:#b0b0b0;
+	color:#434343;
+}
 /*td{
 	vertical-align:middle;
 	text-align:center;
