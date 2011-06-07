@@ -7,6 +7,7 @@ TVGBG=function(){
         doInBackGround:function(){
             window.setInterval(function(){
                 TVbackground.updatePrograms();
+                TVbackground.deleteOldPrograms();
             },1000 * 60 * 60 * 12);
             window.setInterval(function(){
                 TVbackground.checkForNotification();
@@ -71,8 +72,14 @@ TVGBG=function(){
                     }
                 }
             });
+        },
+        deleteOldPrograms:function(){
+            TVGdb.Programs.deleteProgramsBeforeDate(date_util.yesterDay("-"), function(){
+                console.log('deleted')
+            });
         }
     }
+    TVbackground.deleteOldPrograms();
     TVbackground.doInBackGround();
     TVbackground.updatePrograms();
     return TVbackground;

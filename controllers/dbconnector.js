@@ -371,6 +371,15 @@ TVGdb.Programs={
                 handler,
                 TVGdb.onError);
         });
+    },
+    deleteProgramsBeforeDate:function(date,handler){
+        console.log(date)
+        TVGdb.db.transaction(function(tx) {
+            tx.executeSql("DELETE FROM programs WHERE sttime < ?;",
+                [date],
+                handler,
+                TVGdb.onError);
+        });
     }
 }
 
