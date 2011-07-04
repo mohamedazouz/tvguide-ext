@@ -35,11 +35,14 @@ var TVGuidePopup = function(){
                         out+='<div class="f film-details-imageless">';
                     }
                     if(list[j].follow == 'true'){
-                        out+='<div style="cursor:pointer;" onclick="tvguidepopup.removeNotification('+list[j].id+',this)" title="احذ�? تنبية" class="f-r alert-icon"><img alt="احذ�? تنبية" src="images/close.png" width="26" height="25"></div>';
+                        out+='<div style="cursor:pointer;" onclick="tvguidepopup.removeNotification('+list[j].id+',this)" title="احذ�? تنبية" class="f-r alert-icon"><img alt="احذ�? تنبية" src="images/close.png" width="26" height="25"></div>';
+                        out+='<div class="f-r">من '+((from.getUTCHours() + country.timeZone)%24)+':'+from.getMinutes()+'  الى '+((to.getUTCHours() + country.timeZone)%24)+':'+to.getMinutes()+'</div>';
                     }else if((from.getTime()+from.getTimezoneOffset()*60*1000) > (date.getTime() + date.getTimezoneOffset() * 60 * 1000 )){
-                        out+='<div style="cursor:pointer;" onclick="tvguidepopup.addNotification('+list[j].id+',this)" title="أض�? تنبية" class="f-r alert-icon"><img alt="أض�? تنبية" src="images/alert_icon.png" width="26" height="25"></div>';
+                        out+='<div style="cursor:pointer;" onclick="tvguidepopup.addNotification('+list[j].id+',this)" title="أضف? تنبية" class="f-r alert-icon"><img alt="أضف? تنبية" src="images/alert_icon.png" width="26" height="25"></div>';
+                        out+='<div class="f-r">من '+((from.getUTCHours() + country.timeZone)%24)+':'+from.getMinutes()+'  الى '+((to.getUTCHours() + country.timeZone)%24)+':'+to.getMinutes()+'</div>';
+                    }else{
+                        out+='<div class="f-r current-program">من '+((from.getUTCHours() + country.timeZone)%24)+':'+from.getMinutes()+'  الى '+((to.getUTCHours() + country.timeZone)%24)+':'+to.getMinutes()+'</div>';
                     }
-                    out+='<div class="f-r current-programe">من '+((from.getUTCHours() + country.timeZone)%24)+':'+from.getMinutes()+'  الى '+((to.getUTCHours() + country.timeZone)%24)+':'+to.getMinutes()+'</div>';
                     out+='<div class="film-name">';
                     out+='<strong><a style="cursor:pointer;" onclick="tvguidepopup.openURL(\''+list[j].link+'\')">';
                     out+=list[j].title;
@@ -81,7 +84,7 @@ var TVGuidePopup = function(){
                     //                    out+='<div class="f channels-name"></div>';
                     out+='</div>';
                     out+='</div>';
-                    out+='<div style="cursor:pointer;" onclick="tvguidepopup.removeNotificationFromTab('+list[h].id+',this)" title="احذ�? تنبية" class="f-r alert-icon"><img alt="احذ�? تنبية" src="images/close.png" width="26" height="25"></div>';
+                    out+='<div style="cursor:pointer;" onclick="tvguidepopup.removeNotificationFromTab('+list[h].id+',this)" title="احذ�? تنبية" class="f-r alert-icon"><img alt="احذ�? تنبية" src="images/close.png" width="26" height="25"></div>';
                     out+='<div class="nl"></div>';
                     out+='</div>';
                     out+='<div class="separator"></div>';
