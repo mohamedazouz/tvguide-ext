@@ -68,7 +68,13 @@ var TVGOptions=function(){
                 window.localStorage.notification=this.value;
                 if(this.value == 'on'){
                     $('#alertForOption').show();
+                    if(window.localStorage.alertIn !="30" && window.localStorage.alertIn !="60" &&window.localStorage.alertIn !="120" &&window.localStorage.alertIn !="45" ){
+                        $("#chooseAlertdiv").show();
+                        $('#alertFor').val('1');
+                        $("#chooseAlert").attr('value', window.localStorage.alertIn);
+                    }
                 }else{
+                    $("#chooseAlertdiv").hide();
                     $('#alertForOption').hide();
                 }
             });
@@ -78,11 +84,27 @@ var TVGOptions=function(){
             }else{
                 $('#alertForOption').hide();
             }
-
-            $('#alertFor').val(window.localStorage.alertIn);
+            if(window.localStorage.alertIn !="30" && window.localStorage.alertIn !="60" &&window.localStorage.alertIn !="120" &&window.localStorage.alertIn !="45" ){
+                $('#alertFor').val('1');
+                $("#chooseAlert").attr('value', window.localStorage.alertIn);
+            }else
+            {
+                $("#chooseAlertdiv").hide();
+                $('#alertFor').val(window.localStorage.alertIn);
+            }
+            
             $('#alertFor').change(function(){
-                window.localStorage.alertIn=this.value;
+                if(this.value==1){
+                    $("#chooseAlertdiv").show()
+                    $("#chooseAlert").attr('value', window.localStorage.alertIn);
+                }else{
+                    $("#chooseAlertdiv").hide()
+                    window.localStorage.alertIn=this.value;
+                }
             });
+            $('#chooseAlert').change(function(){
+                window.localStorage.alertIn=this.value;
+            })
             $("#saveButton").click(function(){
                 chrome.extension.sendRequest({
                     action:'updateChannelsPrograms'
