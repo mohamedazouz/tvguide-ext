@@ -216,3 +216,8 @@ table.radioTable tr.send-tr td {
     color:#333;
 
 }
+input[type='number']{
+
+    width: 123px;
+    border: 1px solid #CCC;
+}
