@@ -6,7 +6,7 @@
 var staticURL={
     channels:[{
         "url":"http://google.arabiainform.com/1.xml",
-        "name":"الجزيرة",
+        "name":"الجزيرة aljazera ",
         "img":"channels/al_eazera.jpg",
         "opimg":"option_channels/aljazeera.png"
     },{
@@ -61,7 +61,7 @@ var staticURL={
         "opimg":"option_channels/arabiya.png"
     },{
         "url":"http://google.arabiainform.com/202.xml",
-        "name":"المغربية",
+        "name":" 2m maroc  المغربية ",
         "img":"channels/images (9).jpg",
         "opimg":"option_channels/2m_maroc.png"
     },{
