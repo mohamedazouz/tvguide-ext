@@ -87,7 +87,7 @@ TVGBG=function(){
 
 $(function(){
     if(! window.localStorage.alertIn){
-        window.localStorage.alertIn=10;
+        window.localStorage.alertIn=30;
     }
     if(! window.localStorage.notification){
         window.localStorage.notification='on';
