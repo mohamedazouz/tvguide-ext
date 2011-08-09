@@ -253,6 +253,14 @@ var TVGuidePopup = function(){
                 });
             });
         }
+        console.log(window.localStorage.channelView)
+        if(window.localStorage.channelView=="1"){
+            $("#haramView").show()
+            $("#films-container").hide();
+        }else{
+            $("#haramView").hide();
+            $("#films-container").show();
+        }
     });
     return tvguidepopup;
 }
