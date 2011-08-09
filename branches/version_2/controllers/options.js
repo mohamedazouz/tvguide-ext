@@ -72,6 +72,8 @@ var TVGOptions=function(){
                         $("#chooseAlertdiv").show();
                         $('#alertFor').val('1');
                         $("#chooseAlert").attr('value', window.localStorage.alertIn);
+                    }else{
+                        $('#alertFor').val(window.localStorage.alertIn);
                     }
                 }else{
                     $("#chooseAlertdiv").hide();
@@ -104,6 +106,9 @@ var TVGOptions=function(){
             });
             $('#chooseAlert').change(function(){
                 window.localStorage.alertIn=this.value;
+            })
+            $('#channelview').change(function(){
+                window.localStorage.channelView=this.value;
             })
             $("#saveButton").click(function(){
                 chrome.extension.sendRequest({
