@@ -49,6 +49,41 @@ TVGBG=function(){
             });
             TVGdb.Programs.deleteProgramsForDate(date_util.yesterDay("-"), function(){});
         },
+        updateProgramsByChannelID:function(id,handler){
+            TVGdb.Channels.getChannel(id,function(channel){
+                XHRreader.read('xml', channel.url, {
+                    channelId:channel.id
+                }, function(feed,ob){
+                    //channelId,title,link,stars,img,sttime,endtime,category
+                    var programs=[];
+                    for(j=0;  j <feed.items.length ; j++){
+                        var concatstars=function(stars){
+                            var sts=''
+                            for(s=0; s < stars.length &&  s < 5 ; s++){
+                                sts+=stars[s].name+(s==stars.length-1?'':',')
+                            }
+                            return sts;
+                        }
+                        programs.push({
+                            channelId:ob.channelId,
+                            title:feed.items[j].title,
+                            link:feed.items[j].link,
+                            img:feed.items[j].image,
+                            category:feed.items[j].category,
+                            sttime:feed.items[j].BroadCastStartTime,
+                            endtime:feed.items[j].BroadCastEndTime,
+                            stars:concatstars(feed.items[j].stars)
+                        });
+                    }
+                    handler(programs);
+                    TVGdb.Programs.updateChannelPrograms(ob.channelId, programs, function(){
+                        //console.log('herrey',new Date());
+                        });
+                });
+                
+            });
+            TVGdb.Programs.deleteProgramsForDate(date_util.yesterDay("-"), function(){});
+        },
         checkForNotification:function(){
             if(window.localStorage.notification == 'off'){
                 return;

@@ -24,8 +24,9 @@ and open the template in the editor.
                 <div class="menu f-r">
                     <ul>
                         <li class="f active" style="cursor: pointer;"><a id="channelListTab" style="cursor: pointer;">دليل القنوات</a></li>
-<!--                        <li class="f "><a id="programListTab" style="cursor: pointer;">أهم البرامج</a></li>-->
+                        <!--                        <li class="f "><a id="programListTab" style="cursor: pointer;">أهم البرامج</a></li>-->
                         <li class="f" style="cursor: pointer;"><a id="notificationTab" style="cursor: pointer;">التنبية</a></li>
+                        <li class="f" style="cursor: pointer;"><a id="channelPane" style="cursor: pointer;">عرض القنوات</a></li>
                     </ul>
                 </div>
                 <div class="nl"></div>
@@ -38,6 +39,14 @@ and open the template in the editor.
                 </div>
                 <div id="nochannels" style="display: none;">لا توجد قنوات مختارة من فضلك إذهب الي <a style="cursor: pointer;color: blue;" id="settingsPage1">الاعدادات</a> لاختيار القنوات المفضلة</div>
                 <div id="nofollowed" style="display: none;">لا توجد برامج متابعة</div>
+
+                <div id="channelsPaneList" class="channels-list" style="display: none;">
+                    <a onclick="channelpane.showchannel(1)"><img alt="الجزيرة aljazera " src="channels/al_eazera.jpg"></a><br>
+                    <a onclick="channelpane.showchannel(1)"><img alt="الجزيرة aljazera " src="channels/al_eazera.jpg"></a><br>
+                    <a onclick="channelpane.showchannel(1)"><img alt="الجزيرة aljazera " src="channels/al_eazera.jpg"></a><br>
+                    <a onclick="channelpane.showchannel(1)"><img alt="الجزيرة aljazera " src="channels/al_eazera.jpg"></a><br>
+                    <a onclick="channelpane.showchannel(1)"><img alt="الجزيرة aljazera " src="channels/al_eazera.jpg"></a><br>
+                </div>
                 <div style="display: none;" id="programList">
                     <div align="center" class="programList">
                         <img id="channelLogo" alt="" src="images/ajax-loader.gif" width="311" height="72">
@@ -58,5 +67,6 @@ and open the template in the editor.
                 <div class="nl"></div>
             </div>
         </div>
+        <a href="newPane.html" target="blank">Pane</a>
     </body>
 </html>

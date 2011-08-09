@@ -102,6 +102,7 @@ var TVGuidePopup = function(){
                 $("#backButton").hide();
                 $('#programList').hide();
                 $('#notificationList').hide();
+                $("#channelsPaneList").hide();
                 $('#channelListTab').parent('li').addClass('active');
                 tvguidepopup.selectedChannels();
                 $("#nofollowed").hide();
@@ -113,7 +114,17 @@ var TVGuidePopup = function(){
                 $('#notificationList').show();
                 $('#programList').hide();
                 $("#backButton").show();
+                $("#channelsPaneList").hide();
                 $('#notificationTab').parent('li').addClass('active');
+            });
+            $('#channelPane').click(function(){
+                console.log("hello")
+                $('.active').removeClass('active');
+                $('#channelsList').hide();
+                $("#channelsPaneList").show();
+                $('#programList').hide();
+                $("#backButton").show();
+                $('#channelPane').parent('li').addClass('active');
             });
             $("#settingsPage , #settingsPage1").click(function(){
                 extension.openOptionPage();
