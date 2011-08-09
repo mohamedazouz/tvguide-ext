@@ -34,26 +34,41 @@ body {
     overflow-y:auto;
     padding:10px;
 }
+.channels-details{
+    float: left;
+    height: 220px;
+    overflow-y:auto;
+    overflow-x:hidden;
+    width: 250px;
+    text-align: center;
+}
+.channels-details img{
+    margin: 5px 0;
+    width: 100px;
+}
 .films-container img {
     -webkit-border-radius:5px;
     margin-left:5px;
 }
 /* scroll*/
-.films-container::-webkit-scrollbar {
+.films-container::-webkit-scrollbar, .channels-details::-webkit-scrollbar {
     width: 12px;
     cursor:pointer;
 }
-.films-container::-webkit-scrollbar-button:start:decrement, ::-webkit-scrollbar-button:end:increment {
+.films-container::-webkit-scrollbar-button:start:decrement, ::-webkit-scrollbar-button:end:increment, 
+.channels-details::-webkit-scrollbar-button:start:decrement, ::-webkit-scrollbar-button:end:increment {
     height: 30px;
     display: block;
     background-color: transparent;
     display:none;
 }
-.films-container::-webkit-scrollbar-track-piece {
+.films-container::-webkit-scrollbar-track-piece, 
+.channels-details::-webkit-scrollbar-track-piece, {
     cursor:pointer;
     border-left:1px solid #000;
 }
-.films-container::-webkit-scrollbar-thumb:vertical {
+.films-container::-webkit-scrollbar-thumb:vertical,
+.channels-details::-webkit-scrollbar-thumb:vertical {
     height: 50px;
     background-color: #434343;
     cursor:pointer;
