@@ -40,12 +40,31 @@ and open the template in the editor.
                 <div id="nochannels" style="display: none;">لا توجد قنوات مختارة من فضلك إذهب الي <a style="cursor: pointer;color: blue;" id="settingsPage1">الاعدادات</a> لاختيار القنوات المفضلة</div>
                 <div id="nofollowed" style="display: none;">لا توجد برامج متابعة</div>
 
+                
+
                 <div id="channelsPaneList" class="channels-list" style="display: none;">
+                    <div>
+                        <div style="width: 275px;float: right;">
+                        <div style="cursor:pointer;" onclick="tvguidepopup.addNotification(7,this)" title="أضف? تنبية" class="f-r alert-icon">
+                            <img alt="أضف? تنبية" src="images/alert_icon.png" width="26" height="25">
+                        </div>
+                        <div class="f-r">من 15:30  الى 16:0</div>
+                        <div class="film-name">
+                            <strong>
+                                <a style="cursor:pointer;" onclick="tvguidepopup.openURL('http://www.betshoof.com/ar/detail.aspx?pid=81294&amp;en=0')">الاقتصاد اليوم </a>
+                            </strong>
+                        </div>
+                    </div>
+                    <div class="nl"></div>
+
+                </div>
+                    <div class="channels-details">
+                        <a onclick="channelpane.showchannel(1)"><img alt="الجزيرة aljazera " src="channels/al_eazera.jpg"></a><br>
                     <a onclick="channelpane.showchannel(1)"><img alt="الجزيرة aljazera " src="channels/al_eazera.jpg"></a><br>
                     <a onclick="channelpane.showchannel(1)"><img alt="الجزيرة aljazera " src="channels/al_eazera.jpg"></a><br>
                     <a onclick="channelpane.showchannel(1)"><img alt="الجزيرة aljazera " src="channels/al_eazera.jpg"></a><br>
                     <a onclick="channelpane.showchannel(1)"><img alt="الجزيرة aljazera " src="channels/al_eazera.jpg"></a><br>
-                    <a onclick="channelpane.showchannel(1)"><img alt="الجزيرة aljazera " src="channels/al_eazera.jpg"></a><br>
+                    </div>
                 </div>
                 <div style="display: none;" id="programList">
                     <div align="center" class="programList">
