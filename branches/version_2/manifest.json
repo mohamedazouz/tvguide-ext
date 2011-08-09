@@ -1,0 +1,19 @@
+{
+    "name":"TV Guide",
+    "version": "1.0",
+    "description": "Your TV Guide",
+    "background_page": "views/background.html",
+    "options_page": "views/options.html",
+   "icons":{
+        "48": "views/icons/TV48.png",
+        "128": "views/icons/TV128.png",
+//        "32": "views/icons/TV32.png",
+        "16": "views/icons/TV16.png"
+    },
+    "browser_action": {
+        "default_icon": "views/icons/TV128.png",
+        "default_title": "TV Guide",
+        "popup": "views/popup.html"
+  },
+    "permissions": [ "tabs", "http://*/*" ,"notifications","geolocation"]
+}

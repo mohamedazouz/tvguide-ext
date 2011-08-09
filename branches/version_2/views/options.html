@@ -1,0 +1,117 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link type="text/css" rel="stylesheet" href="css/common.css"/>
+        <link type="text/css" rel="stylesheet" href="css/options.css"/>
+        <script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
+        <script type="text/javascript" src="js/jquery.quicksearch.js"></script>
+        <script type="text/javascript" src="../controllers/options.js"></script>
+        <script type="text/javascript" src="../controllers/arabic_countries.js"></script>
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div>
+                <div class="titles">
+                    صفحة اعداد دليل القنوات
+                    <div class="title-icon f"><img src="images/settings.png" width="47" height="49"></div>
+                </div>
+            </div>
+
+            <div class="fields-container">
+                <label class="f form-labels"><strong>إختار البلد</strong></label>
+                <select id="country" name="">
+                </select>
+            </div>
+
+            <div class="fields-container">
+                <label class="f form-labels"><strong>إغلاق التنبية</strong></label>
+                <select id="notificationControll" name="">
+                    <option value="on">تفعيل</option>
+                    <option value="off">تعطيل</option>
+                </select>
+            </div>
+
+            <div id="alertForOption" class="fields-container">
+                <label class="f form-labels"><strong>تنبية قبل العرض</strong></label>
+                <select id="alertFor" name="">
+                   <option value="30">30 دقيقة</option>
+                    <option value="45">45 دقيقة</option>
+                    <option value="60">60 دقيقة</option>
+                    <option value="120">120 دقيقة</option>
+                    <option value="1">اختر الوقت</option>
+                </select>
+                
+            </div>
+            <div class="fields-container" id="chooseAlertdiv">
+                <label class="f form-labels"><strong>اختر الوقت</strong></label>
+                <input type="number" step="1" min="1" max="360" value="0" id="chooseAlert" class="f"/>
+                <label class="f form-labels" style="text-align: left;"><strong>دقيقه</strong></label>
+            </div>
+            
+
+            <div>
+                <div class="titles">
+                    إختار القناة
+                    <!--                    <span class="tip"><strong>- إسحب و أسقط القناة</strong></span>-->
+                    <div class="title-icon f"><img alt="" src="images/choose-channel.png" width="56" height="62"></div>
+                </div>
+            </div>
+
+            <div>
+                <input id="quicksearch" name="" type="text" style="float:left;margin-left: 87px;padding: 0 10px;font-weight: bold;" value="بحث في القنوات" onblur="if(this.value=='')this.value=this.defaultValue;" onfocus="if(this.value==this.defaultValue)this.value='';">
+            </div>
+            <div class="channels-container f">
+                <div class="channels-list f">
+
+                    <!-- putting channels logos as images -->
+                    <ul id="channelList">
+                    </ul>
+                </div>
+            </div>
+            <div class="f" style="width:100%;">
+                <input id="saveButton" type="submit" value="حفظ" class="f-r save-button">
+
+            </div>
+
+            <!--            <div>
+                            <div class="white-bg-title f">
+                                إختار القالب لقائمة المهام
+                                <div class="title-icon f"><img src="images/choose-template.png" width="67" height="67"></div>
+                            </div>
+                        </div>-->
+
+            <!--            <div>
+
+                            <table class="radioTable RTMbps" border="0" cellpadding="0" cellspacing="0">
+                                <tbody>
+                                    <tr>
+                                        <td class="5"><img src="images/template_1.png" width="239" height="180"></td>
+                                        <td class="6"><img src="images/template_2.png" width="239" height="180"></td>
+
+                                        <td class="highlight 8"><img src="images/template_3.png" width="239" height="180"></td>
+                                    </tr>
+                                    <tr class="send-tr">
+                                        <td class="5"><input class="radioDemo" name="Mbps" value="5Mbps" type="radio">
+                                            <a style="cursor:pointer;" onClick="news.setTheme(0)" class="signup Mbps" ><strong>اضف</strong></a></td>
+                                        <td class="6"><input class="radioDemo" name="Mbps" value="5Mbps" type="radio">
+                                            <a style="cursor:pointer;" onClick="news.setTheme(1)" class="signup Mbps" ><strong>اضف</strong></a></td>
+
+                                        <td class=" highlight 8"><input class="radioDemo" name="Mbps" value="5Mbps" type="radio">
+                                            <a style="cursor:pointer;" onClick="news.setTheme(3)" class="signup Mbps" ><strong>اضف</strong></a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>-->
+
+        </div>
+    </body>
+</html>
