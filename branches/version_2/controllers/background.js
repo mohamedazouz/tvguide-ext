@@ -84,6 +84,18 @@ TVGBG=function(){
             });
             TVGdb.Programs.deleteProgramsForDate(date_util.yesterDay("-"), function(){});
         },
+        getChannelprogramsByChannelID:function(channelId,handler){
+            TVbackground.updateProgramsByChannelID(channelId,function(list){
+                console.log(list.length)
+                TVGdb.Programs.updateChannelPrograms(channelId, list, function(){
+                    console.log("2")
+                /*TVGdb.Programs.getTodayChannelPrograms(channelId,function(list){
+                        handler(list)
+                        console.log("3")
+                    })*/
+                });
+            })
+        },
         checkForNotification:function(){
             if(window.localStorage.notification == 'off'){
                 return;

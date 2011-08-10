@@ -26,13 +26,12 @@ and open the template in the editor.
                         <li class="f active"  id="gridView" style="cursor: pointer;"><a id="channelListTab" style="cursor: pointer;">دليل القنوات</a></li>
                         <!--                        <li class="f "><a id="programListTab" style="cursor: pointer;">أهم البرامج</a></li>-->
                         <li class="f" style="cursor: pointer;"><a id="notificationTab" style="cursor: pointer;">التنبية</a></li>
-                        <li class="f" style="cursor: pointer;"><a id="channelPane" style="cursor: pointer;">عرض القنوات</a></li>
                     </ul>
                 </div>
                 <div class="nl"></div>
             </div>
             <!-- videos Thumbs -->
-            <div class="films-container" id="films-container">
+            <div class="films-container">
                 <!-- channels List-->
                 <div id="channelsList" class="channels-list">
                     <img src="images/TV_loader.gif" alt="loading" class="loader-img"/>
@@ -52,32 +51,14 @@ and open the template in the editor.
                     <div id="programscontainer"></div>
                 </div>
                 <div style="display: none;" id="notificationList"></div>
-            </div>
-            <div id="haramView" class="channels-list">
-                <div>
-                    <div style="width: 275px;float: right;">
-                        <div style="cursor:pointer;" onclick="tvguidepopup.addNotification(7,this)" title="أضف? تنبية" class="f-r alert-icon">
-                            <img alt="أضف? تنبية" src="images/alert_icon.png" width="26" height="25">
-                        </div>
-                        <div class="f-r">من 15:30  الى 16:0</div>
-                        <div class="film-name">
-                            <strong>
-                                <a style="cursor:pointer;" onclick="tvguidepopup.openURL('http://www.betshoof.com/ar/detail.aspx?pid=81294&amp;en=0')">الاقتصاد اليوم </a>
-                            </strong>
-                        </div>
+                <div id="haramView" class="channels-list">
+                    <div style="width: 275px;float: right;display: none;" id="channelprogram">
                     </div>
                     <div class="nl"></div>
-
-                </div>
-                <div class="channels-details">
-                    <a onclick="channelpane.showchannel(1)"><img alt="الجزيرة aljazera " src="channels/al_eazera.jpg"></a><br>
-                    <a onclick="channelpane.showchannel(1)"><img alt="الجزيرة aljazera " src="channels/al_eazera.jpg"></a><br>
-                    <a onclick="channelpane.showchannel(1)"><img alt="الجزيرة aljazera " src="channels/al_eazera.jpg"></a><br>
-                    <a onclick="channelpane.showchannel(1)"><img alt="الجزيرة aljazera " src="channels/al_eazera.jpg"></a><br>
-                    <a onclick="channelpane.showchannel(1)"><img alt="الجزيرة aljazera " src="channels/al_eazera.jpg"></a><br>
+                    <div class="channels-details" id="channels-details">
+                    </div>
                 </div>
             </div>
-
             <div class="tools">
                 <strong><a id="settingsPage" class="settings f">أعدادات</a></strong>
                 <a style="cursor: pointer;" onclick="extension.openURL('http://www.betshoof.com',false)" class="sponser f" ><img alt="" src="images/btshoof.png" width="167" height="79" /></a>
@@ -85,6 +66,5 @@ and open the template in the editor.
                 <div class="nl"></div>
             </div>
         </div>
-        <a href="newPane.html" target="blank">Pane</a>
     </body>
 </html>
