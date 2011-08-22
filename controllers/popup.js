@@ -76,9 +76,9 @@ var TVGuidePopup = function(){
                     out+='<div style="width: 275px;float: right;">';
                     if(list[j].img != null && list[j].img != ''){
                         out+='<a style="cursor:pointer;" onclick="tvguidepopup.openURL(\''+list[j].link+'\')" class="f"><img src="'+list[j].img+'" width="76" height="45"></a>';
-                        out+='<div class="f film-details">';
+                        out+='<div class="f film-details" style="width:250px;">';
                     }else{
-                        out+='<div class="f film-details-imageless">';
+                        out+='<div class="f film-details-imageless" style="width:250px;">';
                     }
                     if(list[j].follow == 'true'){
                         out+='<div style="cursor:pointer;" onclick="tvguidepopup.removeNotification('+list[j].id+',this)" title="احذ�? تنبية" class="f-r alert-icon"><img alt="احذ�? تنبية" src="images/close.png" width="26" height="25"></div>';
@@ -105,7 +105,6 @@ var TVGuidePopup = function(){
                     out+='</div>';
                     out+='<div class="nl"></div>';
                     out+='</div>';
-                    out+='<div class="separator"></div>';
                 }
                 //style="width: 275px;float: right;"
                 return out;

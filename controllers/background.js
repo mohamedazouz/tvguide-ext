@@ -139,6 +139,9 @@ $(function(){
     if(! window.localStorage.notification){
         window.localStorage.notification='on';
     }
+    if(!window.localStorage.channelView){
+        window.localStorage.channelView=1;
+    }
 })
 
 var TVbackground = TVGBG();
