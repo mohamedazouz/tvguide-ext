@@ -27,6 +27,7 @@ form{margin:0;}
 select{min-width:120px;}
 .fields-container{
     padding:5px;
+    overflow: hidden;
 }
 .form-labels{
     min-width:120px;

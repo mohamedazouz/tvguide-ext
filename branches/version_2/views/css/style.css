@@ -46,6 +46,17 @@ body {
     margin: 5px 0;
     width: 100px;
 }
+.channels-title{
+    float: right;
+}
+.channels-title img{
+    width: 80px;
+    height: 80px;
+    box-shadow: 0px 0px 5px #333;
+}
+.channels-details .current {
+    border: 2px dashed #333;
+}
 .films-container img {
     -webkit-border-radius:5px;
     margin-left:5px;
