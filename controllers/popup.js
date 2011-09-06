@@ -38,7 +38,7 @@ var TVGuidePopup = function(){
                         out+='<div style="cursor:pointer;" onclick="tvguidepopup.removeNotification('+list[j].id+',this)" title="احذ�? تنبية" class="f-r alert-icon"><img alt="احذ�? تنبية" src="images/close.png" width="26" height="25"></div>';
                         out+='<div class="f-r">من '+((from.getUTCHours() + country.timeZone)%24)+':'+from.getMinutes()+'  الى '+((to.getUTCHours() + country.timeZone)%24)+':'+to.getMinutes()+'</div>';
                     }else if((from.getTime()+from.getTimezoneOffset()*60*1000) > (date.getTime() + date.getTimezoneOffset() * 60 * 1000 )){
-                        out+='<div style="cursor:pointer;" onclick="tvguidepopup.addNotification('+list[j].id+',this)" title="أض�?? تنبية" class="f-r alert-icon"><img alt="أض�?? تنبية" src="images/alert_icon.png" width="26" height="25"></div>';
+                        out+='<div style="cursor:pointer;" onclick="tvguidepopup.addNotification('+list[j].id+',this)" title="أض�?? تنبية" class="f-r alert-icon"><img alt="أض�?? تنبية" src="images/alert_icon.png" width="26" height="25"></div>';
                         out+='<div class="f-r">من '+((from.getUTCHours() + country.timeZone)%24)+':'+from.getMinutes()+'  الى '+((to.getUTCHours() + country.timeZone)%24)+':'+to.getMinutes()+'</div>';
                     }else{
                         out+='<div class="f-r current-program">من '+((from.getUTCHours() + country.timeZone)%24)+':'+from.getMinutes()+'  الى '+((to.getUTCHours() + country.timeZone)%24)+':'+to.getMinutes()+'</div>';
@@ -63,8 +63,9 @@ var TVGuidePopup = function(){
                 }
                 return out;
             },
-            programListHaramView:function(list){
+            programListHaramView:function(list,channelimg){
                 var out='';
+                out+='<div class="channels-title"><img src="../views/'+channelimg+'" /></div>'
                 var country=JSON.parse(window.localStorage.country);
                 for( j in list){
                     from = new Date(list[j].sttime);
@@ -84,7 +85,7 @@ var TVGuidePopup = function(){
                         out+='<div style="cursor:pointer;" onclick="tvguidepopup.removeNotification('+list[j].id+',this)" title="احذ�? تنبية" class="f-r alert-icon"><img alt="احذ�? تنبية" src="images/close.png" width="26" height="25"></div>';
                         out+='<div class="f-r">من '+((from.getUTCHours() + country.timeZone)%24)+':'+from.getMinutes()+'  الى '+((to.getUTCHours() + country.timeZone)%24)+':'+to.getMinutes()+'</div>';
                     }else if((from.getTime()+from.getTimezoneOffset()*60*1000) > (date.getTime() + date.getTimezoneOffset() * 60 * 1000 )){
-                        out+='<div style="cursor:pointer;" onclick="tvguidepopup.addNotification('+list[j].id+',this)" title="أض�?? تنبية" class="f-r alert-icon"><img alt="أض�?? تنبية" src="images/alert_icon.png" width="26" height="25"></div>';
+                        out+='<div style="cursor:pointer;" onclick="tvguidepopup.addNotification('+list[j].id+',this)" title="أض�?? تنبية" class="f-r alert-icon"><img alt="أض�?? تنبية" src="images/alert_icon.png" width="26" height="25"></div>';
                         out+='<div class="f-r">من '+((from.getUTCHours() + country.timeZone)%24)+':'+from.getMinutes()+'  الى '+((to.getUTCHours() + country.timeZone)%24)+':'+to.getMinutes()+'</div>';
                     }else{
                         out+='<div class="f-r current-program">من '+((from.getUTCHours() + country.timeZone)%24)+':'+from.getMinutes()+'  الى '+((to.getUTCHours() + country.timeZone)%24)+':'+to.getMinutes()+'</div>';
@@ -286,27 +287,27 @@ var TVGuidePopup = function(){
          *
          **/
         allChannnelMenue:function(){
-            if(window.localStorage.haramview){
-                console.log("herehere")
-                $("#channels-details").html(window.localStorage.haramview);
-            }else{
+           // if(window.localStorage.haramview){
+           //     $("#channels-details").html(window.localStorage.haramview);
+           // }else{
                 background.TVGdb.Channels.getChannels(function(list){
                     var out="";
                     for(i in list){
-                        out+='<a onclick="tvguidepopup.showChannelProgramDetails('+list[i].id+')">'
+                        out+='<a onclick="tvguidepopup.showChannelProgramDetails('+list[i].id+',\''+list[i].img+'\')">'
                         out+='<img alt="'+list[i].name+'" src="'+list[i].img+'"  id="'+list[i].id+'"/>';
                         out+='</a><br/>'
                     }
                     $("#channels-details").html(out);
                     window.localStorage.haramview=out;
                 })
-            }
+            //}
         },
-        showChannelProgramDetails:function(id){
+        showChannelProgramDetails:function(channelId,channelImg){
             $("#channelprogram").html('<img src="images/TV_loader.gif" alt="loading" class="loader-img"/>');
             $("#channelprogram").show('<img src="images/TV_loader.gif" alt="loading" class="loader-img"/>');
-            $("#"+id).addClass("current");
-            background.TVbackground.updateProgramsByChannelID(id,function(list){
+            $(".current").removeClass('current');
+            $("#"+channelId).addClass("current");
+            background.TVbackground.updateProgramsByChannelID(channelId,function(list){
                 today=new  Date().getDay();
                 var out=""
                 var todayList=[];
@@ -316,7 +317,7 @@ var TVGuidePopup = function(){
                         todayList.push(list[i]);
                     }
                 }
-                $("#channelprogram").html(tvguidepopup.HTMLGenerators.programListHaramView(todayList));
+                $("#channelprogram").html(tvguidepopup.HTMLGenerators.programListHaramView(todayList,channelImg));
             });
         }
 
