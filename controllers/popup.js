@@ -63,7 +63,7 @@ var TVGuidePopup = function(){
                 }
                 return out;
             },
-            programListHaramView:function(list,channelimg){
+            programListHaramView:function(list,channelimg,handler){
                 var out='';
                 out+='<div class="channels-title"><img src="../views/'+channelimg+'" /></div>'
                 var country=JSON.parse(window.localStorage.country);
@@ -74,12 +74,12 @@ var TVGuidePopup = function(){
                     if((to.getTime()+to.getTimezoneOffset()*60*1000) < (date.getTime() + date.getTimezoneOffset() * 60 * 1000 ) ){
                         continue;
                     }
-                    out+='<div style="width: 275px;float: right;">';
+                    out+='<div style="width:330px;float: right;border-bottom: 1px solid #666;margin-bottom: 10px;padding-bottom: 10px;">';
                     if(list[j].img != null && list[j].img != ''){
                         out+='<a style="cursor:pointer;" onclick="tvguidepopup.openURL(\''+list[j].link+'\')" class="f"><img src="'+list[j].img+'" width="76" height="45"></a>';
-                        out+='<div class="f film-details" style="width:250px;">';
+                        out+='<div class="f film-details" style="width:249px;">';
                     }else{
-                        out+='<div class="f film-details-imageless" style="width:250px;">';
+                        out+='<div class="f film-details-imageless" style="width:330px;">';
                     }
                     if(list[j].follow == 'true'){
                         out+='<div style="cursor:pointer;" onclick="tvguidepopup.removeNotification('+list[j].id+',this)" title="احذ�? تنبية" class="f-r alert-icon"><img alt="احذ�? تنبية" src="images/close.png" width="26" height="25"></div>';
@@ -106,9 +106,11 @@ var TVGuidePopup = function(){
                     out+='</div>';
                     out+='<div class="nl"></div>';
                     out+='</div>';
+                    
                 }
                 //style="width: 275px;float: right;"
-                return out;
+                handler(out)
+                
             },
             notificationList:function(list){
                 var out='';
@@ -134,7 +136,7 @@ var TVGuidePopup = function(){
                     out+='<div style="cursor:pointer;" onclick="tvguidepopup.removeNotificationFromTab('+list[h].id+',this)" title="احذ�? تنبية" class="f-r alert-icon"><img alt="احذ�? تنبية" src="images/close.png" width="26" height="25"></div>';
                     out+='<div class="nl"></div>';
                     out+='</div>';
-                    //out+='<div class="separator"></div>';
+                //out+='<div class="separator"></div>';
                 }
                 return out;
             }
@@ -287,26 +289,30 @@ var TVGuidePopup = function(){
          *
          **/
         allChannnelMenue:function(){
-           // if(window.localStorage.haramview){
-           //     $("#channels-details").html(window.localStorage.haramview);
-           // }else{
-                background.TVGdb.Channels.getChannels(function(list){
-                    var out="";
-                    for(i in list){
-                        out+='<a onclick="tvguidepopup.showChannelProgramDetails('+list[i].id+',\''+list[i].img+'\')">'
-                        out+='<img alt="'+list[i].name+'" src="'+list[i].img+'"  id="'+list[i].id+'"/>';
-                        out+='</a><br/>'
-                    }
-                    $("#channels-details").html(out);
-                    window.localStorage.haramview=out;
-                })
-            //}
+            // if(window.localStorage.haramview){
+            //     $("#channels-details").html(window.localStorage.haramview);
+            // }else{
+            background.TVGdb.Channels.getChannels(function(list){
+                var out="";
+                for(i in list){
+                    out+='<a onclick="tvguidepopup.showChannelProgramDetails('+list[i].id+',\''+list[i].img+'\')">'
+                    out+='<div style="float:left; width:90%;" id="'+list[i].id+'"><div style="float:right;font-size:14px;color:#666;">'+list[i].name+'</div><img alt="'+list[i].name+'" src="'+list[i].img+'"   width="20" height="20"/></div>';
+                    out+='</a>'
+                }
+                $("#channels-details").html(out);
+                window.localStorage.haramview=out;
+            })
+        //}
         },
-        showChannelProgramDetails:function(channelId,channelImg){
+        showChannelProgramDetails:function(channelId,channelImg,handler){
             $("#channelprogram").html('<img src="images/TV_loader.gif" alt="loading" class="loader-img"/>');
             $("#channelprogram").show('<img src="images/TV_loader.gif" alt="loading" class="loader-img"/>');
-            $(".current").removeClass('current');
+            $(".current").removeClass('current')
             $("#"+channelId).addClass("current");
+            window.localStorage.openChannel=JSON.stringify({
+                channelId:channelId,
+                channelImg:channelImg
+            })
             background.TVbackground.updateProgramsByChannelID(channelId,function(list){
                 today=new  Date().getDay();
                 var out=""
@@ -317,7 +323,11 @@ var TVGuidePopup = function(){
                         todayList.push(list[i]);
                     }
                 }
-                $("#channelprogram").html(tvguidepopup.HTMLGenerators.programListHaramView(todayList,channelImg));
+                tvguidepopup.HTMLGenerators.programListHaramView(todayList,channelImg,function(response){
+                    $("#channelprogram").html(response);
+                    handler("Done!");
+                })
+                
             });
         }
 
@@ -335,6 +345,13 @@ var TVGuidePopup = function(){
         if(window.localStorage.channelView=="1"){
             $("#channelsList").hide();
             tvguidepopup.allChannnelMenue();
+            if(window.localStorage.openChannel){
+                channel=JSON.parse(window.localStorage.openChannel)
+                tvguidepopup.showChannelProgramDetails(channel.channelId,channel.channelImg,function(){
+                    $("#"+channel.channelId).addClass("current");
+                });
+                
+            }
         }else{
             $("#channelsList").show();
             tvguidepopup.selectedChannels();

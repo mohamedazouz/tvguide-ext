@@ -44,7 +44,9 @@ body {
 }
 .channels-details img{
     margin: 5px 0;
-    width: 100px;
+    width: 30px;
+    height: 30px;
+    float: left;
 }
 .channels-title{
     float: right;
@@ -60,7 +62,7 @@ body {
 .films-container img {
     -webkit-border-radius:5px;
     margin-left:5px;
-}
+}   
 /* scroll*/
 .films-container::-webkit-scrollbar, .channels-details::-webkit-scrollbar {
     width: 12px;

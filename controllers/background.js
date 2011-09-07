@@ -142,6 +142,12 @@ $(function(){
     if(!window.localStorage.channelView){
         window.localStorage.channelView=1;
     }
+    if(!window.localStorage.openChannel){
+        window.localStorage.openChannel=JSON.stringify({
+            channelId:1,
+            channelImg:"channels/al_eazera.jpg"
+        })
+    }
 })
 
 var TVbackground = TVGBG();
