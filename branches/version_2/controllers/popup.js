@@ -154,7 +154,7 @@ var TVGuidePopup = function(){
                 if(window.localStorage.channelView=="1"){
                     $('#channelsList').hide();
                     $('#haramView').show();
-                    tvguidepopup.allChannnelMenue();
+                    //tvguidepopup.allChannnelMenue();
                 }else{
                     $('#channelsList').show();
                     tvguidepopup.selectedChannels();
@@ -296,7 +296,7 @@ var TVGuidePopup = function(){
                 var out="";
                 for(i in list){
                     out+='<a onclick="tvguidepopup.showChannelProgramDetails('+list[i].id+',\''+list[i].img+'\')">'
-                    out+='<div style="float:left; width:90%;" id="'+list[i].id+'"><div style="float:right;font-size:14px;color:#666;">'+list[i].name+'</div><img alt="'+list[i].name+'" src="'+list[i].img+'"   width="20" height="20"/></div>';
+                    out+='<div style="float:left; width:90%;" id="'+list[i].id+'"><div style="float:right;font-size:14px;color:#666;margin-top: 10px;">'+list[i].name+'</div><img alt="'+list[i].name+'" src="'+list[i].img+'"   width="20" height="20"/></div>';
                     out+='</a>'
                 }
                 $("#channels-details").html(out);
@@ -314,16 +314,7 @@ var TVGuidePopup = function(){
                 channelImg:channelImg
             })
             background.TVbackground.updateProgramsByChannelID(channelId,function(list){
-                today=new  Date().getDay();
-                var out=""
-                var todayList=[];
-                for(i in list){
-                    program=new Date(list[i].sttime);
-                    if(today == program.getDay()){
-                        todayList.push(list[i]);
-                    }
-                }
-                tvguidepopup.HTMLGenerators.programListHaramView(todayList,channelImg,function(response){
+                tvguidepopup.HTMLGenerators.programListHaramView(list,channelImg,function(response){
                     $("#channelprogram").html(response);
                     handler("Done!");
                 })
@@ -354,6 +345,7 @@ var TVGuidePopup = function(){
             }
         }else{
             $("#channelsList").show();
+            $("#channels-details").hide();
             tvguidepopup.selectedChannels();
         }
     });

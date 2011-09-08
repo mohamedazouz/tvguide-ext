@@ -156,6 +156,7 @@ var TVGOptions=function(){
     $(function(){
         tvgoptions.populateChannelList();
         tvgoptions.setDomEvents();
+        $("#channelview").val(window.localStorage.channelView);
     });
     return tvgoptions;
 }
