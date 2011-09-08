@@ -296,7 +296,7 @@ var TVGuidePopup = function(){
                 var out="";
                 for(i in list){
                     out+='<a onclick="tvguidepopup.showChannelProgramDetails('+list[i].id+',\''+list[i].img+'\',null)">'
-                    out+='<div style="float:left; width:90%;" id="'+list[i].id+'"><div style="float:right;font-size:14px;color:#666;margin-top: 10px;">'+list[i].name+'</div><img alt="'+list[i].name+'" src="'+list[i].img+'"   width="20" height="20"/></div>';
+                    out+='<div style="float:left; width:90%;cursor: pointer;" id="'+list[i].id+'"><div style="float:right;font-size:14px;color:#666;margin-top: 10px;">'+list[i].name+'</div><img alt="'+list[i].name+'" src="'+list[i].img+'"   width="20" height="20"/></div>';
                     out+='</a>'
                 }
                 $("#channels-details").html(out);
