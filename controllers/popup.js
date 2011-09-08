@@ -154,7 +154,7 @@ var TVGuidePopup = function(){
                 if(window.localStorage.channelView=="1"){
                     $('#channelsList').hide();
                     $('#haramView').show();
-                    //tvguidepopup.allChannnelMenue();
+                //tvguidepopup.allChannnelMenue();
                 }else{
                     $('#channelsList').show();
                     tvguidepopup.selectedChannels();
@@ -295,7 +295,7 @@ var TVGuidePopup = function(){
             background.TVGdb.Channels.getChannels(function(list){
                 var out="";
                 for(i in list){
-                    out+='<a onclick="tvguidepopup.showChannelProgramDetails('+list[i].id+',\''+list[i].img+'\')">'
+                    out+='<a onclick="tvguidepopup.showChannelProgramDetails('+list[i].id+',\''+list[i].img+'\',null)">'
                     out+='<div style="float:left; width:90%;" id="'+list[i].id+'"><div style="float:right;font-size:14px;color:#666;margin-top: 10px;">'+list[i].name+'</div><img alt="'+list[i].name+'" src="'+list[i].img+'"   width="20" height="20"/></div>';
                     out+='</a>'
                 }
@@ -304,11 +304,10 @@ var TVGuidePopup = function(){
             })
         //}
         },
-        showChannelProgramDetails:function(channelId,channelImg,handler){
+        showChannelProgramDetails:function(channelId,channelImg){
             $("#channelprogram").html('<img src="images/TV_loader.gif" alt="loading" class="loader-img"/>');
             $("#channelprogram").show('<img src="images/TV_loader.gif" alt="loading" class="loader-img"/>');
             $(".current").removeClass('current')
-            $("#"+channelId).addClass("current");
             window.localStorage.openChannel=JSON.stringify({
                 channelId:channelId,
                 channelImg:channelImg
@@ -316,7 +315,7 @@ var TVGuidePopup = function(){
             background.TVbackground.updateProgramsByChannelID(channelId,function(list){
                 tvguidepopup.HTMLGenerators.programListHaramView(list,channelImg,function(response){
                     $("#channelprogram").html(response);
-                    handler("Done!");
+                    $("#"+channelId).addClass("current");
                 })
                 
             });
@@ -338,9 +337,7 @@ var TVGuidePopup = function(){
             tvguidepopup.allChannnelMenue();
             if(window.localStorage.openChannel){
                 channel=JSON.parse(window.localStorage.openChannel)
-                tvguidepopup.showChannelProgramDetails(channel.channelId,channel.channelImg,function(){
-                    $("#"+channel.channelId).addClass("current");
-                });
+                tvguidepopup.showChannelProgramDetails(channel.channelId,channel.channelImg);
                 
             }
         }else{
