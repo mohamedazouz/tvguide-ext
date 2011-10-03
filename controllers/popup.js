@@ -174,6 +174,20 @@ var TVGuidePopup = function(){
             $("#settingsPage , #settingsPage1").click(function(){
                 extension.openOptionPage();
             });
+            $("#todayharamviewlist").click(function(){
+                if(!$(this).hasClass("activeProgram")){
+                    tvguidepopup.setTodaysHaramViewList(JSON.parse(window.localStorage.openChannel));
+                    $(".activeProgram").removeClass("activeProgram");
+                    $(this).addClass("activeProgram");
+                }
+            })
+            $("#tomharamviewlist").click(function(){
+                if(!$(this).hasClass("activeProgram")){
+                    tvguidepopup.setTomorrowHaramViewList(JSON.parse(window.localStorage.openChannel));
+                    $(".activeProgram").removeClass("activeProgram");
+                    $(this).addClass("activeProgram");
+                }
+            })
         },
         /**
          * get selected channels from db and add them to the channel list tab.
@@ -316,8 +330,29 @@ var TVGuidePopup = function(){
                 tvguidepopup.HTMLGenerators.programListHaramView(list,channelImg,function(response){
                     $("#channelprogram").html(response);
                     $("#"+channelId).addClass("current");
+                    $("#todayharamviewlist").addClass("activeProgram");
                 })
                 
+            });
+        },
+        setTodaysHaramViewList:function(channel){
+            //  console.log(channelId)
+            $("#channelprogram").html('<img src="images/TV_loader.gif" alt="loading" class="loader-img"/>');
+            $("#channelprogram").show('<img src="images/TV_loader.gif" alt="loading" class="loader-img"/>');
+            background.TVGdb.Programs.getTodayChannelPrograms(channel.channelId,function(response){
+                tvguidepopup.HTMLGenerators.programListHaramView(response,channel.channelImg,function(response){
+                    $("#channelprogram").html(response);
+                })
+            });
+        },
+        setTomorrowHaramViewList:function(channel){
+            //  console.log(channelId)
+            $("#channelprogram").html('<img src="images/TV_loader.gif" alt="loading" class="loader-img"/>');
+            $("#channelprogram").show('<img src="images/TV_loader.gif" alt="loading" class="loader-img"/>');
+            background.TVGdb.Programs.getTomorrowChannelPrograms(channel.channelId,function(response){
+                tvguidepopup.HTMLGenerators.programListHaramView(response,channel.channelImg,function(response){
+                    $("#channelprogram").html(response);
+                })
             });
         }
 
