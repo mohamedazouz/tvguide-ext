@@ -303,20 +303,22 @@ var TVGuidePopup = function(){
          *
          **/
         allChannnelMenue:function(){
-            // if(window.localStorage.haramview){
-            //     $("#channels-details").html(window.localStorage.haramview);
-            // }else{
-            background.TVGdb.Channels.getChannels(function(list){
-                var out="";
-                for(i in list){
-                    out+='<a onclick="tvguidepopup.showChannelProgramDetails('+list[i].id+',\''+list[i].img+'\',null)">'
-                    out+='<div style="float:left; width:90%;cursor: pointer;" id="'+list[i].id+'"><div style="float:right;font-size:14px;color:#666;margin-top: 10px;">'+list[i].name+'</div><img alt="'+list[i].name+'" src="'+list[i].img+'"   width="20" height="20"/></div>';
-                    out+='</a>'
+            //background.TVGdb.Channels.getChannels(function(list){
+            background.TVGdb.Channels.getActiveChannels(function(list){
+                if(list.length>0){
+                    var out="";
+                    for(i in list){
+                        out+='<a onclick="tvguidepopup.showChannelProgramDetails('+list[i].id+',\''+list[i].img+'\',null)">'
+                        out+='<div style="float:left; width:90%;cursor: pointer;" id="'+list[i].id+'"><div style="float:right;font-size:14px;color:#666;margin-top: 10px;">'+list[i].name+'</div><img alt="'+list[i].name+'" src="'+list[i].img+'"   width="20" height="20"/></div>';
+                        out+='</a>'
+                    }
+                    $("#channels-details").html(out);
+                }else{
+                    $("#haramView").hide();
+                    $("#nochannels").show();
                 }
-                $("#channels-details").html(out);
-                window.localStorage.haramview=out;
             })
-        //}
+            
         },
         showChannelProgramDetails:function(channelId,channelImg){
             $("#channelprogram").html('<img src="images/TV_loader.gif" alt="loading" class="loader-img"/>');
@@ -377,6 +379,7 @@ var TVGuidePopup = function(){
                 
             }
         }else{
+            $("#haramView").hide();
             $("#channelsList").show();
             $("#channels-details").hide();
             tvguidepopup.selectedChannels();
