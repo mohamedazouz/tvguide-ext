@@ -326,11 +326,12 @@ var TVGuidePopup = function(){
                 channelId:channelId,
                 channelImg:channelImg
             })
+            $(".activeProgram").removeClass("activeProgram");
+            $("#todayharamviewlist").addClass("activeProgram");
             background.TVbackground.updateProgramsByChannelID(channelId,function(list){
                 tvguidepopup.HTMLGenerators.programListHaramView(list,channelImg,function(response){
                     $("#channelprogram").html(response);
                     $("#"+channelId).addClass("current");
-                    $("#todayharamviewlist").addClass("activeProgram");
                 })
                 
             });
